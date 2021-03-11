@@ -66,7 +66,6 @@ public class SimpleArray<T> implements Iterable<T> {
         dataList[size - 1] = null;
         size--;
     }
-
     private T get(int index) {
         checkIndex(index);
         return (T) dataList[index];
