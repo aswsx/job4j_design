@@ -1,61 +1,105 @@
-//package ru.job4j.generics;
+package ru.job4j.generics;
 
-//import org.junit.Before;
-//import org.junit.Test;
-//import ru.job4j.it.EvenIt;
-//
-//import java.util.Iterator;
-//import java.util.NoSuchElementException;
-//
-//import static org.hamcrest.core.Is.is;
-//import static org.junit.Assert.assertThat;
-//
-//public class SimpleArrayTest {
-//
-//    private Iterator<Integer> it;
-//
-//    @Before
-//    public void setUp() {
-//        it = new EvenIt(new int[] {1, 2, 3, 4, 5, 6, 7});
-//    }
-//
-//    @Test(expected = NoSuchElementException.class)
-//    public void shouldReturnEvenNumbersSequentially() {
-//        assertThat(it.hasNext(), is(true));
-//        assertThat(it.next(), is(2));
-//        assertThat(it.hasNext(), is(true));
-//        assertThat(it.next(), is(4));
-//        assertThat(it.hasNext(), is(true));
-//        assertThat(it.next(), is(6));
-//        assertThat(it.hasNext(), is(false));
-//        it.next();
-//    }
-//
-//    @Test
-//    public void sequentialHasNextInvocationDoesntAffectRetrievalOrder() {
-//        assertThat(it.hasNext(), is(true));
-//        assertThat(it.hasNext(), is(true));
-//        assertThat(it.next(), is(2));
-//        assertThat(it.next(), is(4));
-//        assertThat(it.next(), is(6));
-//    }
-//
-//    @Test
-//    public void  shouldReturnFalseIfNoAnyEvenNumbers() {
-//        it = new EvenIt(new int[]{1});
-//        assertThat(it.hasNext(), is(false));
-//    }
-//
-//    @Test
-//    public void allNumbersAreEven() {
-//        it = new EvenIt(new int[] {2, 4, 6, 8});
-//        assertThat(it.hasNext(), is(true));
-//        assertThat(it.next(), is(2));
-//        assertThat(it.hasNext(), is(true));
-//        assertThat(it.next(), is(4));
-//        assertThat(it.hasNext(), is(true));
-//        assertThat(it.next(), is(6));
-//        assertThat(it.hasNext(), is(true));
-//        assertThat(it.next(), is(8));
-//    }
-//}
+import org.junit.Test;
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+
+public class SimpleArrayTest {
+
+    @Test(expected = NoSuchElementException.class)
+    public void noNextElementThenException() {
+        SimpleArray<Integer> data = new SimpleArray<>(1);
+        data.add(1);
+        Iterator<Integer> it = data.iterator();
+        it.next();
+        it.next();
+    }
+
+    @Test
+    public void whenNextElement() {
+        SimpleArray<Integer> data = new SimpleArray<>(3);
+        data.add(1);
+        data.add(2);
+        Iterator<Integer> it = data.iterator();
+        assertThat(it.next(), is(1));
+        assertThat(it.next(), is(2));
+    }
+
+    @Test
+    public void whenHasNextAndAddElementThenTrue() {
+        SimpleArray<Integer> data = new SimpleArray<>(2);
+        data.add(1);
+        data.add(2);
+        Iterator<Integer> it = data.iterator();
+        assertThat(it.hasNext(), is(true));
+        assertThat(it.hasNext(), is(true));
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void whenAddNewThenException() {
+        SimpleArray<Integer> data = new SimpleArray<>(1);
+        data.add(1);
+        data.add(2);
+    }
+
+    @Test
+    public void whenSetNew() {
+        SimpleArray<Integer> data = new SimpleArray<>(2);
+        data.add(1);
+        data.add(2);
+        data.set(0, 8);
+        data.set(1, 9);
+        assertThat(data.get(0), is(8));
+        assertThat(data.get(1), is(9));
+    }
+
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void whenSetNewThenException() {
+        SimpleArray<Integer> data = new SimpleArray<>(2);
+        data.add(1);
+        data.add(2);
+        data.set(3, 5);
+    }
+
+    @Test
+    public void whenRemoveElement() {
+        SimpleArray<Integer> data = new SimpleArray<>(5);
+        data.add(1);
+        data.add(2);
+        data.add(3);
+        data.remove(1);
+        assertThat(data.get(0), is(1));
+        assertThat(data.get(1), is(3));
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void whenRemoveNewThenException() {
+        SimpleArray<Integer> data = new SimpleArray<>(2);
+        data.add(1);
+        data.add(2);
+        data.remove(3);
+    }
+
+    @Test
+    public void whenGetElement() {
+        SimpleArray<Integer> data = new SimpleArray<>(2);
+        data.add(1);
+        data.add(2);
+        assertThat(data.get(0), is(1));
+        assertThat(data.get(1), is(2));
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void whenGetThenException() {
+        SimpleArray<Integer> data = new SimpleArray<>(2);
+        data.add(1);
+        data.add(2);
+        data.get(4);
+    }
+}
+
