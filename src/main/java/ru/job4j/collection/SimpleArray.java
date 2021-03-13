@@ -1,9 +1,6 @@
 package ru.job4j.collection;
 
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * @author Alex Gutorov (lextor78@gmail.com)
@@ -38,10 +35,8 @@ public class SimpleArray<T> implements Iterable<T> {
     public void checkLength(int newLength) {
         int currentLength = container.length;
         if (newLength == currentLength) {
-            int changedLength = (currentLength * 3 / 2) + 1;
-            Object[] newDataList = new Object[changedLength];
-            System.arraycopy(container, 0, newDataList, 0, size);
-            container = newDataList;
+            int changedLength = (currentLength * 3 / 2);
+            container = Arrays.copyOf(container, changedLength);
         }
     }
 
