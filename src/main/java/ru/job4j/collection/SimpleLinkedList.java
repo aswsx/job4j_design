@@ -19,8 +19,7 @@ public class SimpleLinkedList<E> implements Iterable<E> {
     }
 
     private void add(E value) {
-        Node<E> newNode = new Node<E>(lastNode, value, null);
-        lastNode = newNode;
+        lastNode = new Node<E>(lastNode, value, null);
         size++;
         modCount++;
     }
