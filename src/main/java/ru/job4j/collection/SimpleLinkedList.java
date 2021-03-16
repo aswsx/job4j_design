@@ -5,39 +5,37 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
-public class SimpleLinkedList<E> implements Iterable<E> {
-    private final Node<E> firstNode = null;
+public class SimpleLinkedList<E> implements List<E> {
+    private Node<E> firstNode;
     private Node<E> lastNode;
     private int size = 0;
     private int modCount = 0;
 
     private void checkIndex(int index) {
-        if (size == 0) {
-            throw new IndexOutOfBoundsException();
-        }
         Objects.checkIndex(index, size);
     }
 
-    private void add(E value) {
-        Node<E> newNode = new Node<E>(lastNode, value, null);
+    public void add(E value) {
+        Node<E> newNode = new Node<>(lastNode, value, null);
+        Node<E> tail = lastNode;
         lastNode = newNode;
+        if (tail == null || size == 0) {
+            firstNode = newNode;
+        } else {
+            lastNode.nextElement = newNode;
+        }
         size++;
         modCount++;
     }
 
-    private E get(int index) {
+    public E get(int index) {
         checkIndex(index);
-        Node<E> rsl = null;
-        if (index == 0) {
-            return firstNode.currentElement;
-        }
-        if (index + 1 == size) {
-            return lastNode.currentElement;
-        }
+        Node<E> rsl = firstNode;
         for (int i = 0; i < index; i++) {
             rsl = rsl.nextElement;
         }
         return rsl.currentElement;
+
     }
 
     @Override
