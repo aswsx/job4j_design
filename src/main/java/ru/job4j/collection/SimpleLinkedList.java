@@ -18,12 +18,12 @@ public class SimpleLinkedList<E> implements List<E> {
     public void add(E value) {
         Node<E> newNode = new Node<>(lastNode, value, null);
         Node<E> tail = lastNode;
-        lastNode = newNode;
         if (tail == null || size == 0) {
             firstNode = newNode;
         } else {
             lastNode.nextElement = newNode;
         }
+        lastNode = newNode;
         size++;
         modCount++;
     }
