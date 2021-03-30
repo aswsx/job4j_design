@@ -16,6 +16,7 @@ public class SimpleSet<T> implements Set<T> {
         return false;
     }
 
+
     @Override
     public boolean contains(T value) {
         Iterator<T> i = iterator();
