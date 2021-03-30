@@ -8,6 +8,7 @@ import java.util.NoSuchElementException;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertNull;
 
 public class SimpleArrayTest {
 
@@ -25,6 +26,14 @@ public class SimpleArrayTest {
         array.add("first");
         String rsl = array.iterator().next();
         assertThat(rsl, is("first"));
+    }
+
+    @Test
+    public void whenAddNull() {
+        SimpleArray<Integer> array = new SimpleArray<>();
+        array.add(null);
+        Integer rsl = array.iterator().next();
+        assertNull(rsl);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
