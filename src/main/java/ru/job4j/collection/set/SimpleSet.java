@@ -12,16 +12,16 @@ public class SimpleSet<T> implements Set<T> {
         if (!contains(value)) {
             set.add(value);
             return true;
+        } else if (value == null && !contains(null)) {
+            set.add(null);
+            return true;
         }
         return false;
     }
 
     @Override
     public boolean contains(T value) {
-        Iterator<T> i = iterator();
-        T elem;
-        while (i.hasNext()) {
-            elem = i.next();
+        for (T elem : this) {
             if (elem == null || elem.equals(value)) {
                 return true;
             }
