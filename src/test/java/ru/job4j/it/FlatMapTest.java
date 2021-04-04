@@ -8,6 +8,7 @@ import java.util.NoSuchElementException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class FlatMapTest {
@@ -74,5 +75,16 @@ public class FlatMapTest {
         FlatMap flat = new FlatMap(it);
         assertTrue(flat.hasNext());
         assertThat(1, is(flat.next()));
+    }
+    @Test
+    public void whenSeveralEmpty() {
+        Iterator<Iterator<Object>> it = List.of(
+                List.of().iterator(),
+                List.of().iterator(),
+                List.of().iterator(),
+                List.of().iterator()
+        ).iterator();
+        FlatMap flat = new FlatMap(it);
+        assertFalse(flat.hasNext());
     }
 }
