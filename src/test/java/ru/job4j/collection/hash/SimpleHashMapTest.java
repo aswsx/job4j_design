@@ -2,6 +2,9 @@ package ru.job4j.collection.hash;
 
 import org.junit.Test;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
@@ -40,6 +43,12 @@ public class SimpleHashMapTest {
     }
 
     @Test
+    public void whenDelete() {
+        SimpleHashMap<Integer, Integer> table = new SimpleHashMap<>();
+        assertFalse(table.delete(0));
+    }
+
+    @Test
     public void whenInsertThenReplace() {
         SimpleHashMap<Integer, Integer> table = new SimpleHashMap<>();
         table.insert(1, 1);
@@ -65,5 +74,17 @@ public class SimpleHashMapTest {
         }
     }
 
+    @Test
+    public void whenHasNotNext() {
+        SimpleHashMap<Integer, Integer> table = new SimpleHashMap<>();
+        Iterator<Integer> it = table.iterator();
+        assertFalse(it.hasNext());
+    }
 
+    @Test(expected = NoSuchElementException.class)
+    public void whenIteratorExceptionWhenEmpty() {
+        SimpleHashMap<Integer, Integer> table = new SimpleHashMap<>();
+        Iterator<Integer> it = table.iterator();
+        it.next();
+    }
 }

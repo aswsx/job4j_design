@@ -141,8 +141,8 @@ public class SimpleHashMap<K, V> implements Iterable<K> {
 
     public Iterator<K> iterator() {
         return new Iterator<>() {
-            private final Node<K, V>[] tempTable = table;
-            private final int expectedModCount = modCount;
+            final Node<K, V>[] tempTable = table;
+            final int expectedModCount = modCount;
             int point = 0;
 
             @Override
@@ -150,13 +150,10 @@ public class SimpleHashMap<K, V> implements Iterable<K> {
                 if (expectedModCount != modCount) {
                     throw new ConcurrentModificationException();
                 }
-                for (int i = point; i < tempTable.length; i++) {
-                    if (tempTable[i] != null) {
-                        point = i;
-                        return true;
-                    }
+                while (table[point] == null && point < table.length - 1) {
+                    point++;
                 }
-                return false;
+                return table[point] != null;
             }
 
             @Override
@@ -164,12 +161,13 @@ public class SimpleHashMap<K, V> implements Iterable<K> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                return (K) tempTable[point++];
+                return tempTable[point++].key;
             }
         };
     }
 
-    /** класс NODE описывает ячейки массива
+    /**
+     * класс NODE описывает ячейки массива
      *
      * @param <K> Ключ элемента массива
      * @param <V> Значение элемента массива
