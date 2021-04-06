@@ -2,6 +2,9 @@ package ru.job4j.collection.hash;
 
 import java.util.*;
 
+/**
+ *
+ */
 public class User {
     private final String name;
     private final int children;
