@@ -28,7 +28,12 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, children, birthday);
+        int result = name.hashCode(); //инициализация переменной result
+        int a = Integer.hashCode(children); //вычисление хэшкода второго поля
+        int b = birthday.hashCode(); // вычисление хэшкода третьего поля
+        result = 31 * result + a; //вычисление результата для второго поля
+        result = 31 * result + b; //вычисление итогового результата
+        return result; //возврат вычисленного хэшкода
     }
 
     public static void main(String[] args) {
