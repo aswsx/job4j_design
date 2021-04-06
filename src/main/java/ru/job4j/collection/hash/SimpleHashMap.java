@@ -9,9 +9,8 @@ import java.util.NoSuchElementException;
  *
  * @param <K> ключ элемента массива <p>
  * @param <V> значение элемента массива <p>
- *
  * @author Alex Gutorov
- * @version 1.0
+ * @version 1.1
  * <p>
  * tableLength длина массива (максимально возможное число элементов) <p>
  * elementCounter счетчик элементов в массиве <p>
@@ -26,6 +25,7 @@ public class SimpleHashMap<K, V> implements Iterable<K> {
     private int tableCapacity;
     private int modCount = 0;
     private Node<K, V>[] table;
+    final float loadFactor = 0.75F;
 
     /**
      * Constructor <p>
@@ -36,13 +36,13 @@ public class SimpleHashMap<K, V> implements Iterable<K> {
      */
     public SimpleHashMap() {
         tableLength = 16;
-        float loadFactor = 0.75F;
         tableCapacity = (int) (loadFactor * tableLength);
         table = new Node[tableLength];
     }
 
     /**
      * Метод расчитывает индекс бакета
+     *
      * @param key ключ элемента
      * @return возвращает вычисленный индекс элемента
      * Метод расчитывает индекс элемента массива по его ключу <p>
@@ -58,6 +58,7 @@ public class SimpleHashMap<K, V> implements Iterable<K> {
 
     /**
      * Метод вставляет элемент в массив
+     *
      * @param key   ключ элемента
      * @param value значение элемента
      * @return возвращает true если элемент добавлен в массив при условии что бакет массива пуст
@@ -72,7 +73,7 @@ public class SimpleHashMap<K, V> implements Iterable<K> {
      * Если бакет не пуст и ключи элементов равны, заменяется значение существующего элемента новым,
      * инкрементируется счетчик изменений массива, счетчик элементов не изменяется
      */
-    boolean insert(K key, V value) {
+    public boolean insert(K key, V value) {
         if (elementCounter > tableCapacity) {
             tableResize();
         }
@@ -94,13 +95,14 @@ public class SimpleHashMap<K, V> implements Iterable<K> {
 
     /**
      * Метод возвращает значение элемента по ключу
+     *
      * @param key ключ элемента
      * @return возвращает элемент, полученный из бакета по ключу.
      * <p>
      * Метод проверяет не пустой ли бакет и не разные ли ключи у элемента в бакете и не разные ли ключи,
      * и возвращает либо null либо найденный элемент
      */
-    V get(K key) {
+    public V get(K key) {
         int index = indexCalc(key);
         if (table[index] == null || !table[index].getKey().equals(key)) {
             return null;
@@ -110,10 +112,11 @@ public class SimpleHashMap<K, V> implements Iterable<K> {
 
     /**
      * Метод удаляет элемент по ключу
+     *
      * @param key ключ элемента
      * @return возвращает true если элемент удален или false если бакет пуст или ключи не совпадают
      */
-    boolean delete(K key) {
+    public boolean delete(K key) {
         int index = indexCalc(key);
         if (table[index] == null || !table[index].getKey().equals(key)) {
             return false;
@@ -133,9 +136,9 @@ public class SimpleHashMap<K, V> implements Iterable<K> {
     private void tableResize() {
         Node<K, V>[] resizedTable = table;
         Node<K, V> el;
-        modCount = 0;
+        modCount++;
         tableLength = tableLength << 1;
-        tableCapacity = (int) (tableLength * 0.75F);
+        tableCapacity = (int) (tableLength * loadFactor);
         table = new Node[tableLength];
         for (Node<K, V> node : resizedTable) {
             if (node != null) {
@@ -147,8 +150,8 @@ public class SimpleHashMap<K, V> implements Iterable<K> {
 
     /**
      * Итератор по ключам
-     * @return hasNext() проверяет наличие следующего элемента, next() возвращает ключ следующего элемента
      *
+     * @return hasNext() проверяет наличие следующего элемента, next() возвращает ключ следующего элемента
      */
     public Iterator<K> iterator() {
         return new Iterator<>() {
