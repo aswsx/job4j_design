@@ -14,7 +14,7 @@ class SimpleTree<E> implements Tree<E> {
 
     @Override
     public boolean add(E parent, E child) {
-        Optional<Node> pNode = findBy(parent);
+        Optional<Node<E>> pNode = findBy(parent);
         if (findBy(child).isPresent() || pNode.isEmpty()) {
             return false;
         }
@@ -28,14 +28,14 @@ class SimpleTree<E> implements Tree<E> {
     }
 
     @Override
-    public Optional<Node> findBy(E value) {
+    public Optional<Node<E>> findBy(E value) {
         Predicate<Node<E>> condition = (node) -> node.value.equals(value);
         return findByPredicate(condition);
     }
 
-    private Optional<Node> findByPredicate(Predicate<Node<E>> condition) {
-        Optional<Node> rsl = Optional.empty();
-        Queue<Node> data = new LinkedList<>();
+    private Optional<Node<E>> findByPredicate(Predicate<Node<E>> condition) {
+        Optional<Node<E>> rsl = Optional.empty();
+        Queue<Node<E>> data = new LinkedList<>();
         data.offer(this.root);
         while (!data.isEmpty()) {
             Node<E> el = data.poll();
