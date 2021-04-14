@@ -21,7 +21,7 @@ public class AnalizeTest {
                 new Analize.User(3, "Ivan")
         );
         Analize analize = new Analize();
-        Analize.Info info = analize.diff(previous,current);
+        Analize.Info info = analize.diff(previous, current);
         Analize.Info expected = new Analize.Info(0, 0, 1);
         assertThat(info, is(expected));
     }
@@ -38,7 +38,7 @@ public class AnalizeTest {
                 new Analize.User(3, "Ivan")
         );
         Analize analize = new Analize();
-        Analize.Info info = analize.diff(previous,current);
+        Analize.Info info = analize.diff(previous, current);
         Analize.Info expected = new Analize.Info(1, 0, 0);
         assertThat(info, is(expected));
     }
@@ -56,7 +56,7 @@ public class AnalizeTest {
                 new Analize.User(3, "Ivan")
         );
         Analize analize = new Analize();
-        Analize.Info info = analize.diff(previous,current);
+        Analize.Info info = analize.diff(previous, current);
         Analize.Info expected = new Analize.Info(0, 1, 0);
         assertThat(info, is(expected));
     }
@@ -74,7 +74,7 @@ public class AnalizeTest {
                 new Analize.User(4, "Ivan")
         );
         Analize analize = new Analize();
-        Analize.Info info = analize.diff(previous,current);
+        Analize.Info info = analize.diff(previous, current);
         Analize.Info expected = new Analize.Info(1, 1, 1);
         assertThat(info, is(expected));
     }
@@ -92,7 +92,7 @@ public class AnalizeTest {
                 new Analize.User(3, "Ivan")
         );
         Analize analize = new Analize();
-        Analize.Info info = analize.diff(previous,current);
+        Analize.Info info = analize.diff(previous, current);
         Analize.Info expected = new Analize.Info(0, 0, 0);
         assertThat(info, is(expected));
     }
