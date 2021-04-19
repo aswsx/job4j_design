@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -42,5 +44,27 @@ public class AnalizyTest {
         }
         assertThat(result.toString(),
                 is("08:58:01;10:56:01;10:57:01;10:58:01;12:01:02;14:59:02;"));
+    }
+
+    @Test
+    public void unavailableTest() {
+        Analizy analizy = new Analizy();
+        analizy.unavailable(
+                "server.log",
+                "unavailable.csv"
+        );
+        List<String> expected = List.of(
+                "10:58:01;10:59:01;",
+                "11:01:02;11:02:02;"
+        );
+        List<String> rsl = new ArrayList<>();
+        try (BufferedReader in = new BufferedReader(
+                new FileReader("unavailable.csv")
+        )) {
+            in.lines().forEach(rsl::add);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertThat(rsl, is(expected));
     }
 }
