@@ -10,7 +10,7 @@ public class ConfigTest {
 
     @Test
     public void whenPairWithoutComment() {
-        String path = "resources/pair_without_comment.properties";
+        String path = "pair_without_comment.properties";
         Config config = new Config(path);
         config.load();
         assertThat(config.value("name"), is("Alex Gutorov"));
@@ -18,7 +18,7 @@ public class ConfigTest {
 
     @Test
     public void whenPairWithComment() {
-        String path = "resources/pair_with_comment.properties";
+        String path = "pair_with_comment.properties";
         Config config = new Config(path);
         config.load();
         assertThat(config.value("name"), is("Alex Gutorov"));
@@ -26,7 +26,7 @@ public class ConfigTest {
 
     @Test
     public void whenPairIsEmpty() {
-        String path = "resources/pair_empty.properties";
+        String path = "pair_empty.properties";
         Config config = new Config(path);
         config.load();
         assertNull(config.value("name"));
