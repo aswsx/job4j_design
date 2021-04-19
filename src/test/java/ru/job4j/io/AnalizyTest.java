@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
 import java.io.*;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,9 +50,11 @@ public class AnalizyTest {
     @Test
     public void unavailableTest() {
         Analizy analizy = new Analizy();
+        URL pathSource = ClassLoader.getSystemResource("server.log");
+        URL pathTarget = ClassLoader.getSystemResource("unavailable.csv");
         analizy.unavailable(
-                "server.log",
-                "unavailable.csv"
+                pathSource.getPath(),
+                pathTarget.getPath()
         );
         List<String> expected = List.of(
                 "10:58:01;10:59:01;",
@@ -59,7 +62,7 @@ public class AnalizyTest {
         );
         List<String> rsl = new ArrayList<>();
         try (BufferedReader in = new BufferedReader(
-                new FileReader("unavailable.csv")
+                new FileReader(pathTarget.getPath())
         )) {
             in.lines().forEach(rsl::add);
         } catch (Exception e) {
