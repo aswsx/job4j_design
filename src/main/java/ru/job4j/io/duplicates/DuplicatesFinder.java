@@ -8,7 +8,7 @@ public class DuplicatesFinder {
 
     public static void main(String[] args) throws IOException {
         DuplicatesVisitor visitor = new DuplicatesVisitor();
-        Files.walkFileTree(Path.of("E:\\1_!!!Canon!!!"), visitor);
+        Files.walkFileTree(Path.of(args[0]), visitor);
         System.out.println(visitor.getFoundDuplicates().toString());
     }
 }
