@@ -8,7 +8,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
 
 public class DuplicatesVisitor extends SimpleFileVisitor<Path> {
-    private final Set<Path> foundFiles = new HashSet<>();
+    private final Set<FileProperty> foundFiles = new HashSet<>();
     private final List<Path> foundDuplicates = new ArrayList<>();
 
     public List<Path> getFoundDuplicates() {
@@ -17,7 +17,11 @@ public class DuplicatesVisitor extends SimpleFileVisitor<Path> {
 
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-        if (file != null && !foundFiles.add(file)) {
+        FileProperty property = new FileProperty(file.toFile().length(),
+                file.toFile().getName());
+        if (!foundFiles.contains(property)) {
+            foundFiles.add(property);
+        } else {
             foundDuplicates.add(file);
         }
         return FileVisitResult.CONTINUE;
