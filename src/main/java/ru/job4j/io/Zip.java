@@ -1,9 +1,10 @@
 package ru.job4j.io;
 
-import ru.job4j.io.duplicates.DuplicatesVisitor;
-
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -12,7 +13,7 @@ public class Zip {
     public void packFiles(List<File> sources, File target) {
         try (ZipOutputStream zip = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(target)))) {
             for (File source : sources) {
-                zip.putNextEntry(new ZipEntry(source.getPath()));
+                zip.putNextEntry(new ZipEntry(source.toString()));
                 try (BufferedInputStream out = new BufferedInputStream(new FileInputStream(source))) {
                     zip.write(out.readAllBytes());
                 }
@@ -33,13 +34,16 @@ public class Zip {
         }
     }
 
-    public static void main(String[] args) {
-        DuplicatesVisitor visitor = new DuplicatesVisitor();
-        new Zip().packSingleFile(
-                new File.,
-                new File("./chapter_005/pom.zip")
-        );
-        new Zip().packFiles(visitor.visitFile(new File("."),  ),
-                new File("./chapter_005/pom.zip");
+    public static void main(String[] args) throws IOException {
+
+        ValidateArgs vArgs = new ValidateArgs(args);
+        if (vArgs.isValid()) {
+            Path root = Paths.get(vArgs.dir());
+            List<Path> sourcesPath = Search.negSearch(root, vArgs.exclude());
+            List<File> sources = sourcesPath.stream()
+                    .map(Path::toFile)
+                    .collect(Collectors.toList());
+            new Zip().packFiles(sources, new File(vArgs.out()));
+        }
     }
 }
