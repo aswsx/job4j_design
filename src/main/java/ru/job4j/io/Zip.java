@@ -39,7 +39,7 @@ public class Zip {
         ValidateArgs vArgs = new ValidateArgs(args);
         if (vArgs.isValid()) {
             Path root = Paths.get(vArgs.dir());
-            List<Path> sourcesPath = Search.negSearch(root, vArgs.exclude());
+            List<Path> sourcesPath = Search.search(p -> !p.toFile().getName().endsWith(vArgs.exclude()), root);
             List<File> sources = sourcesPath.stream()
                     .map(Path::toFile)
                     .collect(Collectors.toList());

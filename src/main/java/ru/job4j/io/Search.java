@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Search {
     public static void main(String[] args) throws IOException {
@@ -15,17 +16,12 @@ public class Search {
             throw new IllegalArgumentException("File extension is null");
         }
         Path start = Paths.get(args[0]);
-        posSearch(start, args[1]).forEach(System.out::println);
+        search(p -> p.toFile().getName().endsWith(args[1]), start)
+                .forEach(System.out::println);
     }
 
-    public static List<Path> posSearch(Path root, String str) throws IOException {
-        SearchFiles searcher = new SearchFiles(p -> p.toFile().getName().endsWith(str));
-        Files.walkFileTree(root, searcher);
-        return searcher.getPaths();
-    }
-
-    public static List<Path> negSearch(Path root, String str) throws IOException {
-        SearchFiles searcher = new SearchFiles(p -> !p.toFile().getName().endsWith(str));
+    public static List<Path> search(Predicate<Path> func, Path root) throws IOException {
+        SearchFiles searcher = new SearchFiles(func);
         Files.walkFileTree(root, searcher);
         return searcher.getPaths();
     }
