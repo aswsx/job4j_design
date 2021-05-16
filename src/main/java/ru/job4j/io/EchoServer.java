@@ -1,6 +1,5 @@
 package ru.job4j.io;
 
-import java.io.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -16,7 +15,6 @@ import java.net.Socket;
  * При получении запроса, содержащего Hello выводится в консоль Hello
  * При получении запроса, содержащего Exit выполняется остановка сервера
  * При получении любого другого запроса выводится в консоль What
- *
  */
 
 public class EchoServer {
@@ -45,3 +43,4 @@ public class EchoServer {
             }
         }
     }
+}
