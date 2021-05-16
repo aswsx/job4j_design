@@ -31,16 +31,15 @@ public class EchoServer {
                      BufferedReader in = new BufferedReader(
                              new InputStreamReader(socket.getInputStream()))) {
                     String str = in.readLine();
+                    out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
                     while (!(str.isEmpty())) {
                         if (str.contains("Exit")) {
                             server.close();
                         } else if (str.startsWith("GET") && !str.contains("Hello")) {
-                            System.out.println("What");
+                            out.write("What".getBytes());
                         } else if (str.startsWith("GET") && str.contains("Hello")) {
-                            System.out.println("Hello");
+                            out.write("Hello".getBytes());
                         }
-                        out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
-                        out.write("Hello, dear friend.".getBytes());
                         str = in.readLine();
                     }
                 } catch (IOException e) {
