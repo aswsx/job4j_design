@@ -25,7 +25,8 @@ public class ConsoleChat {
 
     /**
      * Конструктор
-     * @param path путь к файлу-логу чата
+     *
+     * @param path       путь к файлу-логу чата
      * @param botAnswers путь к файлу с ответами бота
      */
     public ConsoleChat(String path, String botAnswers) {
@@ -49,10 +50,12 @@ public class ConsoleChat {
             log.add(line);
             while (!line.equals(OUT)) {
                 switch (line) {
-                    case (STOP) -> isPause = true;
-                    case (CONTINUE) -> isPause = false;
-                    default -> {
-                    }
+                    case (STOP):
+                        isPause = true;
+                        break;
+                    case (CONTINUE):
+                        isPause = false;
+                    default:
                 }
                 if (!isPause) {
                     String botAnswer = answers.get(rnd.nextInt(answers.size() - 1));
@@ -70,6 +73,7 @@ public class ConsoleChat {
 
     /**
      * Метод построчно считывает ответы из текстового файла и записывает их в массив
+     *
      * @return возвращает массив с ответами, полученными построчным чтением файла с ответами
      */
     private List<String> getAnswer() {
@@ -88,6 +92,7 @@ public class ConsoleChat {
 
     /**
      * Метод записывает строки из массива лога в файл построчно
+     *
      * @param lines принимает массив со строками лога
      */
     private void saveLogFile(List<String> lines) {
