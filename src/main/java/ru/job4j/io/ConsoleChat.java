@@ -38,6 +38,7 @@ public class ConsoleChat {
      * log - массив, в который пишутся строки лога
      * answers - массив, который содержит ответы из файла
      */
+    @SuppressWarnings("checkstyle:InnerAssignment")
     public void run() {
         List<String> log = new ArrayList<>();
         List<String> answers = getAnswer();
@@ -48,12 +49,8 @@ public class ConsoleChat {
             log.add(line);
             while (!line.equals(OUT)) {
                 switch (line) {
-                    case (STOP) -> {
-                        isPause = true;
-                    }
-                    case (CONTINUE) -> {
-                        isPause = false;
-                    }
+                    case (STOP) -> isPause = true;
+                    case (CONTINUE) -> isPause = false;
                     default -> {
                     }
                 }
