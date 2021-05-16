@@ -1,5 +1,8 @@
 package ru.job4j.io;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -16,6 +19,7 @@ import java.util.stream.Collectors;
  * botAnswers путь к файлу с ответами бота
  */
 public class ConsoleChat {
+    private static final Logger LOG = LoggerFactory.getLogger(ConsoleChat.class.getName());
     private final String path;
     private final String botAnswers;
     private static final String OUT = "закончить";
@@ -39,7 +43,6 @@ public class ConsoleChat {
      * log - массив, в который пишутся строки лога
      * answers - массив, который содержит ответы из файла
      */
-    @SuppressWarnings("checkstyle:InnerAssignment")
     public void run() {
         List<String> log = new ArrayList<>();
         List<String> answers = getAnswer();
@@ -66,7 +69,7 @@ public class ConsoleChat {
                 log.add(line);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.error("readLineError", e);
         }
         saveLogFile(log);
     }
@@ -82,7 +85,7 @@ public class ConsoleChat {
                 new FileReader(botAnswers, Charset.forName("WINDOWS-1251")))) {
             answers = reader.lines().collect(Collectors.toList());
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.error("getAnswerError", e);
         }
         if (answers.size() == 0) {
             throw new IllegalArgumentException("file botAnswers.txt is empty");
@@ -103,12 +106,16 @@ public class ConsoleChat {
                 writer.newLine();
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.error("saveLogError", e);
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        ConsoleChat cc = new ConsoleChat("chat.log", "botAnswers.txt");
-        cc.run();
+    public static void main(String[] args) {
+        try {
+            ConsoleChat cc = new ConsoleChat("chat.log", "botAnswers.txt");
+            cc.run();
+        } catch (Exception e) {
+            LOG.error("ChatBotStartException", e);
+        }
     }
 }
