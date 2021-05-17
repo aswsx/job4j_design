@@ -1,8 +1,18 @@
 package ru.job4j.serialization.xml;
 
+import com.sun.xml.txw2.annotation.XmlElement;
+
+import javax.xml.bind.annotation.XmlAttribute;
+
+@XmlElement(value = "Detail")
 public class Detail {
-    private final String name;
-    private final String partNumber;
+    @XmlAttribute
+    private String name;
+    @XmlAttribute
+    private String partNumber;
+
+    public Detail() {
+    }
 
     public Detail(String name, String partNumber) {
         this.name = name;
