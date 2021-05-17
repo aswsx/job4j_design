@@ -52,16 +52,8 @@ public class ConsoleChat {
             String line = reader.readLine();
             log.add(line);
             while (!line.equals(OUT)) {
-                switch (line) {
-                    case (STOP):
-                        isPause = true;
-                        break;
-                    case (CONTINUE):
-                        isPause = false;
-                    default:
-                }
-                if (!isPause) {
-                    String botAnswer = answers.get(rnd.nextInt(answers.size() - 1));
+                if (!checkPause(line)) {
+                    String botAnswer = answers.get(rnd.nextInt(answers.size()));
                     System.out.println(botAnswer);
                     log.add(botAnswer);
                 }
@@ -72,6 +64,23 @@ public class ConsoleChat {
             LOG.error("readLineError", e);
         }
         saveLogFile(log);
+    }
+
+    /**
+     * Метод проверяет входящую строку на команду приостановить ответы от бота
+     * @param line принимает на вход строку соббщение пользователя
+     * @return возвращает статус бота- приостановлены ответы или нет
+     */
+    private boolean checkPause(String line) {
+        switch (line) {
+            case (STOP):
+                isPause = true;
+                break;
+            case (CONTINUE):
+                isPause = false;
+            default:
+        }
+        return isPause;
     }
 
     /**
