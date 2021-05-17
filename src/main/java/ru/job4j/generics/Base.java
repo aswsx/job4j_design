@@ -5,7 +5,7 @@ import java.util.Objects;
 public abstract class Base {
     private final String id;
 
-    public Base(final String id) {
+    protected Base(final String id) {
         this.id = id;
     }
 
@@ -21,7 +21,7 @@ public abstract class Base {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Base base = (Base) o;
+        var base = (Base) o;
         return id.equals(base.id);
     }
 

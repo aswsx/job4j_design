@@ -46,8 +46,8 @@ public class ConsoleChat {
     public void run() {
         List<String> log = new ArrayList<>();
         List<String> answers = getAnswer();
-        Random rnd = new Random();
-        try (BufferedReader reader = new BufferedReader(
+        var rnd = new Random();
+        try (var reader = new BufferedReader(
                 new InputStreamReader(System.in))) {
             String line = reader.readLine();
             log.add(line);
@@ -90,7 +90,7 @@ public class ConsoleChat {
      */
     private List<String> getAnswer() {
         List<String> answers = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(
+        try (var reader = new BufferedReader(
                 new FileReader(botAnswers, Charset.forName("WINDOWS-1251")))) {
             answers = reader.lines().collect(Collectors.toList());
         } catch (IOException e) {
@@ -108,7 +108,7 @@ public class ConsoleChat {
      * @param lines принимает массив со строками лога
      */
     private void saveLogFile(List<String> lines) {
-        try (BufferedWriter writer = new BufferedWriter(
+        try (var writer = new BufferedWriter(
                 new FileWriter(path, Charset.forName("WINDOWS-1251"), true))) {
             for (String msg : lines) {
                 writer.write(msg);
@@ -121,7 +121,7 @@ public class ConsoleChat {
 
     public static void main(String[] args) {
         try {
-            ConsoleChat cc = new ConsoleChat("chat.log", "botAnswers.txt");
+            var cc = new ConsoleChat("chat.log", "botAnswers.txt");
             cc.run();
         } catch (Exception e) {
             LOG.error("ChatBotStartException", e);

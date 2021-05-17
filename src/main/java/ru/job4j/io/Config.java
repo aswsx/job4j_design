@@ -15,7 +15,7 @@ public class Config {
     }
 
     public void load() {
-        try (BufferedReader read = new BufferedReader(new FileReader(path))) {
+        try (var read = new BufferedReader(new FileReader(path))) {
             read.lines()
                     .filter(r -> !r.startsWith("#") && r.contains("="))
                     .map(r -> r.split("="))
@@ -31,8 +31,8 @@ public class Config {
 
     @Override
     public String toString() {
-        StringJoiner out = new StringJoiner(System.lineSeparator());
-        try (BufferedReader read = new BufferedReader(new FileReader(path))) {
+        var out = new StringJoiner(System.lineSeparator());
+        try (var read = new BufferedReader(new FileReader(path))) {
             read.lines().forEach(out::add);
         } catch (Exception e) {
             e.printStackTrace();

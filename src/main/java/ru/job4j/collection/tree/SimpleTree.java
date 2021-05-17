@@ -23,13 +23,13 @@ class SimpleTree<E> implements Tree<E> {
     }
 
     public boolean isBinary() {
-        Predicate<Node<E>> condition = (node) -> node.children.size() > 2;
+        Predicate<Node<E>> condition = node -> node.children.size() > 2;
         return findByPredicate(condition).isEmpty();
     }
 
     @Override
     public Optional<Node<E>> findBy(E value) {
-        Predicate<Node<E>> condition = (node) -> node.value.equals(value);
+        Predicate<Node<E>> condition = node -> node.value.equals(value);
         return findByPredicate(condition);
     }
 

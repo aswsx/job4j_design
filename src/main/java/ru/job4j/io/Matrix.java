@@ -5,9 +5,9 @@ import java.io.FileOutputStream;
 public class Matrix {
 
     public static String multiple(int size) {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
+        var builder = new StringBuilder();
+        for (var i = 0; i < size; i++) {
+            for (var j = 0; j < size; j++) {
                 builder.append((i + 1) * (j + 1));
                 if (j + 1 == size) {
                     builder.append(System.lineSeparator());
@@ -20,7 +20,7 @@ public class Matrix {
     }
 
     public static void main(String[] args) {
-        try (FileOutputStream out = new FileOutputStream("Matrix.txt")) {
+        try (var out = new FileOutputStream("Matrix.txt")) {
             out.write(multiple(9).getBytes());
         } catch (Exception e) {
             e.printStackTrace();

@@ -4,8 +4,8 @@ import java.io.FileInputStream;
 
 public class ReadFile {
     public static void main(String[] args) {
-        try (FileInputStream in = new FileInputStream("input.txt")) {
-            StringBuilder text = new StringBuilder();
+        try (var in = new FileInputStream("input.txt")) {
+            var text = new StringBuilder();
             int read;
             while ((read = in.read()) != -1) {
                 text.append((char) read);

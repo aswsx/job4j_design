@@ -6,9 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.ServerSocket;
-import java.net.Socket;
 
 /**
  * Класс - реализация простого сокета
@@ -22,23 +20,24 @@ import java.net.Socket;
 
 public class EchoServer {
     private static final Logger LOG = LoggerFactory.getLogger(EchoServer.class.getName());
+    private static final String HELLO = "Hello";
 
     public static void main(String[] args) {
-        try (ServerSocket server = new ServerSocket(9000)) {
+        try (var server = new ServerSocket(9000)) {
             while (!server.isClosed()) {
-                Socket socket = server.accept();
-                try (OutputStream out = socket.getOutputStream();
-                     BufferedReader in = new BufferedReader(
+                var socket = server.accept();
+                try (var out = socket.getOutputStream();
+                     var in = new BufferedReader(
                              new InputStreamReader(socket.getInputStream()))) {
                     String str = in.readLine();
                     out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
                     while (!(str.isEmpty())) {
                         if (str.contains("Exit")) {
                             server.close();
-                        } else if (str.startsWith("GET") && !str.contains("Hello")) {
+                        } else if (str.startsWith("GET") && !str.contains(HELLO)) {
                             out.write("What".getBytes());
-                        } else if (str.startsWith("GET") && str.contains("Hello")) {
-                            out.write("Hello".getBytes());
+                        } else if (str.startsWith("GET") && str.contains(HELLO)) {
+                            out.write(HELLO.getBytes());
                         }
                         str = in.readLine();
                     }

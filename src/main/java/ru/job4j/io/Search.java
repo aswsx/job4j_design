@@ -15,13 +15,13 @@ public class Search {
         if (args.length < 2) {
             throw new IllegalArgumentException("File extension is null");
         }
-        Path start = Paths.get(args[0]);
+        var start = Paths.get(args[0]);
         search(p -> p.toFile().getName().endsWith(args[1]), start)
                 .forEach(System.out::println);
     }
 
     public static List<Path> search(Predicate<Path> func, Path root) throws IOException {
-        SearchFiles searcher = new SearchFiles(func);
+        var searcher = new SearchFiles(func);
         Files.walkFileTree(root, searcher);
         return searcher.getPaths();
     }

@@ -8,7 +8,7 @@ import java.util.*;
 public class User {
     private final String name;
     private final int children;
-    private Calendar birthday;
+    private final Calendar birthday;
 
     public User(String name, int children, Calendar birthday) {
         this.name = name;
@@ -24,7 +24,7 @@ public class User {
         if (!(o instanceof User)) {
             return false;
         }
-        User user = (User) o;
+        var user = (User) o;
         return children == user.children && Objects.equals(name, user.name)
                 && Objects.equals(birthday, user.birthday);
     }
@@ -32,7 +32,7 @@ public class User {
     @Override
     public int hashCode() {
         int result = name.hashCode(); //инициализация переменной result
-        int a = Integer.hashCode(children); //вычисление хэшкода второго поля
+        var a = Integer.hashCode(children); //вычисление хэшкода второго поля
         int b = birthday.hashCode(); // вычисление хэшкода третьего поля
         result = 31 * result + a; //вычисление результата для второго поля
         result = 31 * result + b; //вычисление итогового результата
@@ -47,9 +47,9 @@ public class User {
                 0,
                 0);
         birthday.set(Calendar.MILLISECOND, 0);
-        User first = new User("Alex",
+        var first = new User("Alex",
                 2, birthday);
-        User second = new User("Alex",
+        var second = new User("Alex",
                 2, birthday);
         Map<User, Object> map = new HashMap<>();
         map.put(first, new Object());

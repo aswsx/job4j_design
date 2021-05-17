@@ -11,9 +11,9 @@ import java.io.PrintWriter;
  */
 public class Analizy {
     public void unavailable(String source, String target) {
-        try (BufferedReader read = new BufferedReader(new FileReader(source));
-             PrintWriter write = new PrintWriter(new FileOutputStream(target))) {
-            StringBuilder builder = new StringBuilder();
+        try (var read = new BufferedReader(new FileReader(source));
+             var write = new PrintWriter(new FileOutputStream(target))) {
+            var builder = new StringBuilder();
             String line;
             while ((line = read.readLine()) != null) {
                 String[] list = line.split(" ");

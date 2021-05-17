@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Generics {
     public static void main(String[] args) {
-        Generics gen = new Generics();
+        var gen = new Generics();
         List<Animal> first = new ArrayList<>();
         List<Predator> second = new ArrayList<>();
         List<Tiger> third = new ArrayList<>();

@@ -44,7 +44,7 @@ public class ListUtils {
     public static <T> List<T> replaceIf(List<T> list, Predicate<T> filter, T value) {
         ListIterator<T> i = list.listIterator();
         while (i.hasNext()) {
-            T t = i.next();
+            var t = i.next();
             if (filter.test(t)) {
                 i.set(value);
             }

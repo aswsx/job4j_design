@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Dir {
     public static void main(String[] args) {
-        File file = new File("c:\\projects");
+        var file = new File("c:\\projects");
         if (!file.exists()) {
             throw new IllegalArgumentException(String.format("Not exist %s", file.getAbsoluteFile()));
         }
@@ -13,10 +13,11 @@ public class Dir {
             throw new IllegalArgumentException(String.format("Not directory %s", file.getAbsoluteFile()));
         }
         System.out.printf("size : %s%n", file.getTotalSpace());
-        for (File subfile : Objects.requireNonNull(file.listFiles())) {
-            if (!subfile.isDirectory()) {
-                System.out.println(subfile.getAbsoluteFile() + " --> " + subfile.length());
+        for (File subFile : Objects.requireNonNull(file.listFiles())) {
+            if (!subFile.isDirectory()) {
+                System.out.println(subFile.getAbsoluteFile() + " --> " + subFile.length());
             }
         }
     }
+
 }

@@ -29,10 +29,10 @@ public class Analize {
      * @return возвращает статистику выполненных изменений (количество удаленных, измененных и добавленных элементов)
      */
     public Info diff(List<User> previous, List<User> current) {
-        Info info = new Info();
+        var info = new Info();
         Map<Integer, User> prevMap = listToMap(previous);
         for (User user : current) {
-            User currUser = prevMap.remove(user.id);
+            var currUser = prevMap.remove(user.id);
             if (currUser == null) {
                 info.added++;
             } else if (!currUser.name.equals(user.name)) {
@@ -80,7 +80,7 @@ public class Analize {
             if (o == null || getClass() != o.getClass()) {
                 return false;
             }
-            User user = (User) o;
+            var user = (User) o;
             return id == user.id
                     && Objects.equals(name, user.name);
         }
@@ -125,7 +125,7 @@ public class Analize {
             if (o == null || getClass() != o.getClass()) {
                 return false;
             }
-            Info info = (Info) o;
+            var info = (Info) o;
             return added == info.added && changed == info.changed && deleted == info.deleted;
         }
 

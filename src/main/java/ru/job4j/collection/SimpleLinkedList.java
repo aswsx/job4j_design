@@ -31,7 +31,7 @@ public class SimpleLinkedList<E> implements List<E> {
     public E get(int index) {
         checkIndex(index);
         Node<E> rsl = firstNode;
-        for (int i = 0; i < index; i++) {
+        for (var i = 0; i < index; i++) {
             rsl = rsl.nextElement;
         }
         return rsl.currentElement;
@@ -65,7 +65,7 @@ public class SimpleLinkedList<E> implements List<E> {
     }
 
     private static class Node<E> {
-        private E currentElement;
+        private final E currentElement;
         private Node<E> nextElement;
 
         public Node(Node<E> prevElement, E currentElement, Node<E> nextElement) {
