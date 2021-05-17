@@ -1,6 +1,5 @@
 package ru.job4j.serialization.json;
 
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.Arrays;
@@ -29,10 +28,10 @@ public class Person {
     }
 
     public static void main(String[] args) {
-        final Person person = new Person(false, 30, new Contact("11-111"), "Worker", "Married");
+        final var person = new Person(false, 30, new Contact("11-111"), "Worker", "Married");
 
         /* Преобразуем объект person в json-строку. */
-        final Gson gson = new GsonBuilder().create();
+        final var gson = new GsonBuilder().create();
         System.out.println(gson.toJson(person));
 
         /* Модифицируем json-строку */
@@ -47,7 +46,7 @@ public class Person {
                         + "\"statuses\":"
                         + "[\"Student\",\"Free\"]"
                         + "}";
-        final Person personMod = gson.fromJson(personJson, Person.class);
+        final var personMod = gson.fromJson(personJson, Person.class);
         System.out.println(personMod);
     }
 

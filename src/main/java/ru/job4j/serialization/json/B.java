@@ -14,8 +14,8 @@ public class B {
     }
 
     public static void main(String[] args) {
-        A a = new A();
-        B b = new B();
+        var a = new A();
+        var b = new B();
         a.setB(b);
         b.setA(a);
 

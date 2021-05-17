@@ -1,6 +1,5 @@
 package ru.job4j.serialization.json;
 
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -49,11 +48,11 @@ public class Vehicle {
     }
 
     public static void main(String[] args) {
-        final Vehicle saabVehicle = new Vehicle(true, 3, new Car("SAAB"),
+        final var saabVehicle = new Vehicle(true, 3, new Car("SAAB"),
                 "Sedan", "Turbo");
 
         /* Преобразуем объект Vehicle в json-строку. */
-        final Gson gson = new GsonBuilder().create();
+        final var gson = new GsonBuilder().create();
         String saabVehicleToJson = gson.toJson(saabVehicle);
         System.out.println(saabVehicleToJson);
 
@@ -69,20 +68,20 @@ public class Vehicle {
                         + "\"mods\":"
                         + "[\"Coupe\",\"Atmo\"]"
                         + "}";
-        final Vehicle vehicleMod = gson.fromJson(carJson, Vehicle.class);
-        final Vehicle saabVehicleFromJson = gson.fromJson(saabVehicleToJson, Vehicle.class);
+        final var vehicleMod = gson.fromJson(carJson, Vehicle.class);
+        final var saabVehicleFromJson = gson.fromJson(saabVehicleToJson, Vehicle.class);
         System.out.println(vehicleMod);
         System.out.println(saabVehicleFromJson);
 
         /* JSONObject из json-строки строки */
-        JSONObject jsonModel = new JSONObject("{\"model\":\"SAAB\"}");
+        var jsonModel = new JSONObject("{\"model\":\"SAAB\"}");
         /* JSONArray из ArrayList */
         List<String> list = new ArrayList<>();
         list.add("Sedan");
         list.add("Turbo");
-        JSONArray jsonMods = new JSONArray(list);
+        var jsonMods = new JSONArray(list);
         /* JSONObject напрямую методом put */
-        JSONObject jsonObject = new JSONObject();
+        var jsonObject = new JSONObject();
         jsonObject.put("passenger", saabVehicle.isPassenger());
         jsonObject.put("serviceLife", saabVehicle.getServiceLife());
         jsonObject.put("model", jsonModel);

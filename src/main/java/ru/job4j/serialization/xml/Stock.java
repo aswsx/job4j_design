@@ -2,7 +2,6 @@ package ru.job4j.serialization.xml;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.*;
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -41,22 +40,22 @@ public class Stock {
     }
 
     public static void main(String[] args) throws Exception {
-        final Stock stock = new Stock(true, 25, new Detail("Part", "01210203"), "reserved", "limited");
+        final var stock = new Stock(true, 25, new Detail("Part", "01210203"), "reserved", "limited");
 
-        JAXBContext context = JAXBContext.newInstance(Stock.class);
-        Marshaller marshaller = context.createMarshaller();
+        var context = JAXBContext.newInstance(Stock.class);
+        var marshaller = context.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        String xml = "";
+        var xml = "";
 
-        try (StringWriter writer = new StringWriter()) {
+        try (var writer = new StringWriter()) {
             marshaller.marshal(stock, writer);
             xml = writer.getBuffer().toString();
             System.out.println(xml);
         }
 
-        Unmarshaller unmarshaller = context.createUnmarshaller();
-        try (StringReader reader = new StringReader(xml)) {
-            Stock result = (Stock) unmarshaller.unmarshal(reader);
+        var unmarshall = context.createUnmarshaller();
+        try (var reader = new StringReader(xml)) {
+            Stock result = (Stock) unmarshall.unmarshal(reader);
             System.out.println(result);
         }
     }

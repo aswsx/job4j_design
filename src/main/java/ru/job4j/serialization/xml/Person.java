@@ -1,9 +1,7 @@
 package ru.job4j.serialization.xml;
 
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.*;
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -42,24 +40,23 @@ public class Person {
                 + '}';
     }
 
-    public static void main(String[] args) throws JAXBException {
-        final Person person = new Person(false, 30, new Contact("11-111"), "Worker", "Married");
+    public static void main(String[] args) throws Exception {
+        final var person = new Person(false, 30, new Contact("11-111"), "Worker", "Married");
 
-        JAXBContext context = JAXBContext.newInstance(Person.class);
-        Marshaller marshaller = context.createMarshaller();
+        var context = JAXBContext.newInstance(Person.class);
+        var marshaller = context.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        String xml = "";
+        var xml = "";
 
-        try (StringWriter writer = new StringWriter()) {
+        try (var writer = new StringWriter()) {
             marshaller.marshal(person, writer);
             xml = writer.getBuffer().toString();
             System.out.println(xml);
-        } catch (Exception e) {
         }
 
-        Unmarshaller unmarshaller = context.createUnmarshaller();
-        try (StringReader reader = new StringReader(xml)) {
-            Person result = (Person) unmarshaller.unmarshal(reader);
+        var unmarshall = context.createUnmarshaller();
+        try (var reader = new StringReader(xml)) {
+            Person result = (Person) unmarshall.unmarshal(reader);
             System.out.println(result);
         }
     }
