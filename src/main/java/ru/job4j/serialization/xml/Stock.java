@@ -8,7 +8,6 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.Arrays;
 
-
 @XmlRootElement(name = "Stock")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Stock {
@@ -16,7 +15,6 @@ public class Stock {
     private boolean availability;
     @XmlAttribute
     private int quantity;
-
     private Detail detail;
     @XmlElementWrapper(name = "statuses")
     @XmlElement(name = "status")
