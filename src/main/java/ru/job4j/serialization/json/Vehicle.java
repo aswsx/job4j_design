@@ -29,11 +29,12 @@ public class Vehicle {
     }
 
     public static void main(String[] args) {
-        final Vehicle vehicle = new Vehicle(true, 3, new Car("SAAB"), "Sedan", "Turbo");
+        final Vehicle saabVehicle = new Vehicle(true, 3, new Car("SAAB"), "Sedan", "Turbo");
 
-        /* Преобразуем объект person в json-строку. */
+        /* Преобразуем объект Vehicle в json-строку. */
         final Gson gson = new GsonBuilder().create();
-        System.out.println(gson.toJson(vehicle));
+        String saabVehicleToJson = gson.toJson(saabVehicle);
+        System.out.println(saabVehicleToJson);
 
         /* Модифицируем json-строку */
         final String carJson =
@@ -48,7 +49,9 @@ public class Vehicle {
                         + "[\"Coupe\",\"Atmo\"]"
                         + "}";
         final Vehicle vehicleMod = gson.fromJson(carJson, Vehicle.class);
+        final Vehicle saabVehicleFromJson = gson.fromJson(saabVehicleToJson, Vehicle.class);
         System.out.println(vehicleMod);
+        System.out.println(saabVehicleFromJson);
     }
 
 }
