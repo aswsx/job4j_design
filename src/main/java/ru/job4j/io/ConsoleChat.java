@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.nio.charset.Charset;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -43,10 +45,10 @@ public class ConsoleChat {
      * log - массив, в который пишутся строки лога
      * answers - массив, который содержит ответы из файла
      */
-    public void run() {
+    public void run() throws NoSuchAlgorithmException {
         List<String> log = new ArrayList<>();
         List<String> answers = getAnswer();
-        var rnd = new Random();
+        Random rnd = SecureRandom.getInstanceStrong();
         try (var reader = new BufferedReader(
                 new InputStreamReader(System.in))) {
             String line = reader.readLine();
@@ -68,6 +70,7 @@ public class ConsoleChat {
 
     /**
      * Метод проверяет входящую строку на команду приостановить ответы от бота
+     *
      * @param line принимает на вход строку соббщение пользователя
      * @return возвращает статус бота- приостановлены ответы или нет
      */
@@ -78,6 +81,7 @@ public class ConsoleChat {
                 break;
             case (CONTINUE):
                 isPause = false;
+                break;
             default:
         }
         return isPause;
@@ -96,7 +100,7 @@ public class ConsoleChat {
         } catch (IOException e) {
             LOG.error("getAnswerError", e);
         }
-        if (answers.size() == 0) {
+        if (answers.isEmpty()) {
             throw new IllegalArgumentException("file botAnswers.txt is empty");
         }
         return answers;
