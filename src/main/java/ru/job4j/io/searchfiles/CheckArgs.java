@@ -3,6 +3,15 @@ package ru.job4j.io.searchfiles;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Класс - проверяет корректность аргументов, переданных в программу <p>
+ * <p>
+ *
+ * @author Alex Gutorov
+ * @version 1.1
+ * <p>
+ *
+ */
 public class CheckArgs {
     private final ParseArgs parseArgs;
     private static final Logger LOG = LoggerFactory.getLogger(CheckArgs.class.getName());

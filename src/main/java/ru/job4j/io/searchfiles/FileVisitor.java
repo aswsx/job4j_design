@@ -8,6 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
+/**
+ * Класс - выполняет проход по файловой системе и ищет файлы, соответствующие предикату <p>
+ * <p>
+ *
+ * @author Alex Gutorov
+ * @version 1.1
+ * <p>
+ *
+ */
 public class FileVisitor extends SimpleFileVisitor<Path> {
     private final Predicate<Path> func;
     private final List<Path> paths;
