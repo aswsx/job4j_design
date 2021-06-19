@@ -1,0 +1,16 @@
+insert into role(name) VALUES ('operator');
+insert into role(name) VALUES ('user');
+insert into role(name) VALUES ('administrator');
+insert into rules(name) VALUES ('public');
+insert into rules(name) VALUES ('private');
+insert into users(name, role_id) VALUES ('Alex', 1);
+insert into users(name, role_id) VALUES ('Viktor', 2);
+insert into rolerules (role_id, rules_id) VALUES (1, 1);
+insert into category(name) VALUES ('ordinary');
+insert into category(name) VALUES ('VIP');
+insert into state(name) VALUES ('in progress');
+insert into state(name) VALUES ('closed');
+insert into item(name, users_id, category_id, state_id) VALUES ('First_Item', 1, 1, 1);
+insert into item(name, users_id, category_id, state_id) VALUES ('Second_Item', 2, 2, 2);
+insert into comments(comment, item_id) VALUES ('closed', 1);
+insert into attachs(name, item_id) VALUES ('attachment', 1);
