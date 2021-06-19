@@ -1,0 +1,7 @@
+insert into parts(name, partnumber) values ('gear', 123456);
+insert into parts(name, partnumber) values ('link', 123457);
+insert into parts(name, partnumber) values ('roller', 123458);
+
+insert into unit(name, parts_id) values ('Gearbox', 1);
+insert into unit(name, parts_id) values ('Suspension', 2);
+insert into unit(name, parts_id) values ('Engine', 3);
