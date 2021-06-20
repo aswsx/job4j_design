@@ -1,0 +1,3 @@
+select product.name as product, type.name as type_name
+from product
+join type on product.type_id = type.id;

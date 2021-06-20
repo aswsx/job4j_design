@@ -1,0 +1,6 @@
+select *
+from product
+order by product.price desc
+limit 1;
+
+
