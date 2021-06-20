@@ -1,0 +1,25 @@
+insert into people(name) values ('Аня');
+insert into people(name) values ('Ваня');
+insert into people(name) values ('Боря');
+
+insert into devices(name, price) values ('TV', 15000);
+insert into devices(name, price) values ('Phone', 12000);
+insert into devices(name, price) values ('Fridge', 25000);
+insert into devices(name, price) values ('TV', 18000);
+insert into devices(name, price) values ('Phone', 25000);
+insert into devices(name, price) values ('Fridge', 30000);
+insert into devices(name, price) values ('TV', 25000);
+insert into devices(name, price) values ('Phone', 28000);
+insert into devices(name, price) values ('Fridge', 25000);
+
+insert into devices_people(people_id, device_id) values (1, 1);
+insert into devices_people(people_id, device_id) values (1, 2);
+insert into devices_people(people_id, device_id) values (1, 3);
+
+insert into devices_people(people_id, device_id) values (2, 4);
+insert into devices_people(people_id, device_id) values (2, 5);
+insert into devices_people(people_id, device_id) values (2, 6);
+
+insert into devices_people(people_id, device_id) values (3, 7);
+insert into devices_people(people_id, device_id) values (3, 8);
+insert into devices_people(people_id, device_id) values (3, 9);

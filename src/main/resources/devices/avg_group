@@ -1,0 +1,6 @@
+select people.name, avg(devices.price)
+from people
+join devices_people on people.id = devices_people.people_id
+join devices on devices_people.device_id = devices.id
+group by people.name
+order by people.name;
