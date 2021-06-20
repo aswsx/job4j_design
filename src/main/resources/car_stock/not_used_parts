@@ -1,0 +1,14 @@
+select body.name
+from body
+left join car on body.id = car.body_id
+where car.id is null
+union
+select engine.name
+from engine
+left join car on engine.id = car.body_id
+where car.id is null
+union
+select transmission.name
+from transmission
+left join car on transmission.id = car.body_id
+where car.id is null;

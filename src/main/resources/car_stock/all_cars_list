@@ -1,0 +1,5 @@
+select car.name as car, body.name as body, engine.name as engine, transmission.name as transmission
+from car
+left join body on car.body_id = body.id
+left join engine on car.engine_id = engine.id
+left join transmission on car.transmission_id = transmission.id;
