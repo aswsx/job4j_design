@@ -1,0 +1,6 @@
+insert into teens(name, gender) VALUES ('Vasya', 'm');
+insert into teens(name, gender) VALUES ('Fedya', 'm');
+insert into teens(name, gender) VALUES ('Vika', 'f');
+insert into teens(name, gender) VALUES ('Ivan', 'm');
+insert into teens(name, gender) VALUES ('Sveta', 'f');
+insert into teens(name, gender) VALUES ('Yana', 'f');

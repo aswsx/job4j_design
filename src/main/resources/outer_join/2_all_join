@@ -1,0 +1,17 @@
+select *
+from employees e
+left join departments d on e.department_id = d.id;
+
+select * from employees e left join departments d on e.dep_id = d.id;
+
+select *
+from employees e
+right join departments d on e.department_id = d.id;
+
+select *
+from employees e
+full join departments d on e.department_id = d.id;
+
+select *
+from employees
+cross join departments;

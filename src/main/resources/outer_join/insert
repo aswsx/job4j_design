@@ -1,0 +1,12 @@
+insert into departments(name) values ('logistics');
+insert into departments(name) values ('administration');
+insert into departments(name) values ('service');
+insert into departments(name) values ('empty');
+
+insert into employees(name, department_id) values ('Vasya', 1);
+insert into employees(name, department_id) values ('Fedya', 1);
+insert into employees(name, department_id) values ('Igor', 2);
+insert into employees(name, department_id) values ('Jenya', 3);
+insert into employees(name, department_id) values ('Ivan', 2);
+insert into employees(name, department_id) values ('Vlad', 3);
+

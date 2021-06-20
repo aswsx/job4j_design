@@ -1,0 +1,7 @@
+select *
+from employees e
+left join departments d on e.department_id = d.id;
+
+select *
+from employees e
+right join departments d on d.id = e.department_id;

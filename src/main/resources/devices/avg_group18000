@@ -1,7 +1,7 @@
 select people.name, avg(devices.price)
 from people
-join devices_people on people.id = devices_people.people_id
-join devices on devices_people.device_id = devices.id
+join devices_people dp on people.id = dp.people_id
+join devices d on devices_people.device_id = d.id
 group by people.name
 having avg(devices.price) > 18000
 order by people.name;
