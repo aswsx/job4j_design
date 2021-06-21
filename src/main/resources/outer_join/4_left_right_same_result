@@ -3,5 +3,5 @@ from employees e
 left join departments d on e.department_id = d.id;
 
 select *
-from employees e
-right join departments d on d.id = e.department_id;
+from departments d
+right join employee e on e.id = d.department_id;
