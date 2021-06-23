@@ -62,5 +62,4 @@ public class TableEditorTest {
                     .format("%-15s %-15s%n", "column", "type")));
         }
     }
-
 }

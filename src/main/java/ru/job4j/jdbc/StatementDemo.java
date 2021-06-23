@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class StatementDemo {
 
-    private static Connection getConnection() throws Exception {
+    private static Connection getConnection() throws SQLException, ClassNotFoundException {
         Class.forName("org.postgresql.Driver");
         var url = "jdbc:postgresql://localhost:5432/idea_db";
         var login = "postgres";
@@ -26,7 +26,7 @@ public class StatementDemo {
         }
     }
 
-    public static String getTableScheme(Connection connection, String tableName) throws Exception {
+    public static String getTableScheme(Connection connection, String tableName) throws SQLException {
         var scheme = new StringBuilder();
         DatabaseMetaData metaData = connection.getMetaData();
         try (ResultSet columns = metaData.getColumns(null, null, tableName, null)) {
@@ -39,5 +39,4 @@ public class StatementDemo {
         }
         return scheme.toString();
     }
-
 }
