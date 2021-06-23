@@ -26,11 +26,6 @@ public class TableEditor implements AutoCloseable {
 
     public void createTable(String tableName) throws SQLException {
         String sql = "create table if not exists " + tableName + "()";
-//        var sql = String.format(
-//                "create table if not exists %s (%s, %s);",
-//                tableName, "id serial primary key",
-//                "name varchar(255)"
-//        );
         execute(sql);
     }
 
@@ -69,15 +64,15 @@ public class TableEditor implements AutoCloseable {
         return scheme.toString();
     }
 
-     /**
+    /**
      * избавляет от дублирования кода
      *
-     * @param sql
-     * @throws SQLException
+     * @param sql скрипт для выполнения
      */
     private void execute(String sql) throws SQLException {
-        var statement = connection.createStatement();
-        statement.execute(sql);
+        try (var statement = connection.createStatement()) {
+            statement.execute(sql);
+        }
     }
 
 
