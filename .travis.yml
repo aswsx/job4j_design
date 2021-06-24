@@ -12,6 +12,8 @@ env:
    # - CODECOV_TOKEN="dca401a0-aa7c-4758-8259-9c2e5dbea0e0"
 services:
   - postgresql
+before_script:
+  - cp config/database.yml.travis config/database.yml
 before_install:
   - psql -c 'create database tracker;' -U postgres
 
