@@ -9,11 +9,11 @@ sudo: false
   # -
   #-
 # - CODECOV_TOKEN="dca401a0-aa7c-4758-8259-9c2e5dbea0e0"
+addons: # ensure that Travis-CI provisions a DB for our test:
+  postgresql: '13'
+
 services:
   - postgresql
-
-addons: # ensure that Travis-CI provisions a DB for our test:
-      postgresql: '13'
 
 before_script:
   - psql -c 'create database test_postgres_db;' -U postgres
