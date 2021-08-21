@@ -39,7 +39,8 @@ public class Zip {
         var vArgs = new ValidateArgs(args);
         if (vArgs.isValid()) {
             var root = Paths.get(vArgs.dir());
-            List<Path> sourcesPath = Search.search(p -> !p.toFile().getName().endsWith(vArgs.exclude()), root);
+            List<Path> sourcesPath = Search.search(p ->
+                    !p.toFile().getName().endsWith(vArgs.exclude()), root);
             List<File> sources = sourcesPath.stream()
                     .map(Path::toFile)
                     .collect(Collectors.toList());

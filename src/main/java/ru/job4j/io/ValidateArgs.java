@@ -22,15 +22,7 @@ public class ValidateArgs {
     public boolean isValid() {
         try {
             dir();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        }
-        try {
             exclude();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        }
-        try {
             out();
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
