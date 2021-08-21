@@ -12,6 +12,9 @@ public class ArgsName {
     }
 
     private void parse(String[] args) {
+        if (args.length < 2) {
+            throw new IllegalArgumentException();
+        }
         for (String arg : args) {
             String[] split = arg.replaceFirst("-", "").split("=");
             if (split.length < 2) {
