@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
@@ -19,7 +18,7 @@ import static ru.exxo.jutil.Printer.println;
  * в соответствии с заданным фильтром
  *
  * @author Alex Gutorov
- * @version 1.7
+ * @version 1.9
  */
 public class CSVReader {
 
@@ -48,21 +47,33 @@ public class CSVReader {
      * builder собирает отфильтрованные элементы в строки
      */
     public void dataPrepare() {
-        try (var scan = new Scanner(Objects.requireNonNull(CSVReader.class
-                .getClassLoader().getResourceAsStream(path.toString())))) {
+        try (var scan = new Scanner(path)) {
             final String[] tableHeader = scan.next().split(delimiter);
-            int[] index = IntStream.range(0, tableHeader.length)
+            int[] indexes = IntStream.range(0, tableHeader.length)
                     .filter(idx -> filter.contains(tableHeader[idx])).toArray();
-            while (scan.hasNextLine()) {
+            rowsAppender(tableHeader, indexes);
+            builder.append(System.lineSeparator());
+            while (scan.hasNext()) {
                 final String[] rows = scan.next().split(delimiter);
-                for (var i = 0; i < index.length; i++) {
-                    builder.append(
-                            String.format("%s = %s ",
-                            filter.get(i), rows[index[i]]
-                    ));
-                }
-                LOG.info(String.valueOf(builder));
+                rowsAppender(rows, indexes);
                 builder.append(System.lineSeparator());
+            }
+        } catch (IOException e) {
+            LOG.error("dataPrepare...", e);
+        }
+
+    }
+
+    /**
+     *
+     * @param tableRow массив - первая строка таблицы с наименованиями столбцов
+     * @param indexes массив с индексами столбцов, соответствующих фильтру
+     */
+    private void rowsAppender(String[] tableRow, int[] indexes) {
+        for (int j : indexes) {
+            builder.append(tableRow[j]);
+            if (j != indexes.length - 1) {
+                builder.append(";");
             }
         }
     }
@@ -71,7 +82,6 @@ public class CSVReader {
      * Метод, осуществляющий вывод либо в консоль, либо в файл
      */
     public void dataOutput() {
-
         if (out.equals("stdout")) {
             println(builder);
         } else {

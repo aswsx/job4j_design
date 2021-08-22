@@ -2,13 +2,18 @@ package ru.job4j.io;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 public class ArgsName {
 
     private final Map<String, String> values = new HashMap<>();
 
     public String get(String key) {
-        return values.get(key);
+        String value = values.get(key);
+        if (value == null) {
+            throw new NoSuchElementException("Element not found");
+        }
+        return value;
     }
 
     private void parse(String[] args) {
