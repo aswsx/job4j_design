@@ -14,7 +14,7 @@ public class ForwardLinkedTest {
     private static ForwardLinked<Integer> linked;
 
     @Before
-    public void createforwardLinked() {
+    public void createForwardLinked() {
         linked = new ForwardLinked<>();
     }
 
