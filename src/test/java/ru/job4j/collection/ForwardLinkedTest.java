@@ -1,5 +1,6 @@
 package ru.job4j.collection;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Iterator;
@@ -10,10 +11,15 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertFalse;
 
 public class ForwardLinkedTest {
+    private static ForwardLinked<Integer> linked;
+
+    @Before
+    public void createforwardLinked() {
+        linked = new ForwardLinked<>();
+    }
 
     @Test(expected = NoSuchElementException.class)
     public void whenDeleteFirst() {
-        ForwardLinked<Integer> linked = new ForwardLinked<>();
         linked.add(1);
         linked.deleteFirst();
         linked.iterator().next();
@@ -21,13 +27,11 @@ public class ForwardLinkedTest {
 
     @Test(expected = NoSuchElementException.class)
     public void whenDeleteEmptyLinked() {
-        ForwardLinked<Integer> linked = new ForwardLinked<>();
         linked.deleteFirst();
     }
 
     @Test
     public void whenMultiDelete() {
-        ForwardLinked<Integer> linked = new ForwardLinked<>();
         linked.add(1);
         linked.add(2);
         assertThat(linked.deleteFirst(), is(1));
@@ -37,7 +41,6 @@ public class ForwardLinkedTest {
 
     @Test
     public void whenAddThenIter() {
-        ForwardLinked<Integer> linked = new ForwardLinked<>();
         linked.add(1);
         linked.add(2);
         Iterator<Integer> it = linked.iterator();
@@ -47,7 +50,6 @@ public class ForwardLinkedTest {
 
     @Test
     public void whenAddAndRevertThenIter() {
-        ForwardLinked<Integer> linked = new ForwardLinked<>();
         linked.add(1);
         linked.add(2);
         linked.revert();
@@ -57,15 +59,13 @@ public class ForwardLinkedTest {
     }
 
     @Test
-    public void whenSize0ThenReturnFalse() {
-        ForwardLinked<Integer> emptyList = new ForwardLinked<>();
-        assertFalse(emptyList.revert());
+    public void whenSize0ShouldReturnFalse() {
+        assertFalse(linked.revert());
     }
 
     @Test
-    public void whenSize1ThenReturnFalse() {
-        ForwardLinked<Integer> singleList = new ForwardLinked<>();
-        singleList.add(1);
-        assertFalse(singleList.revert());
+    public void whenSize1ShouldReturnFalse() {
+        linked.add(1);
+        assertFalse(linked.revert());
     }
 }
