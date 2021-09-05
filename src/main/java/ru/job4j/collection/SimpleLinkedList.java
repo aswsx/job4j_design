@@ -16,7 +16,7 @@ public class SimpleLinkedList<E> implements List<E> {
     }
 
     public void add(E value) {
-        Node<E> newNode = new Node<>(lastNode, value, null);
+        Node<E> newNode = new Node<>(value, null);
         Node<E> tail = lastNode;
         if (tail == null || size == 0) {
             firstNode = newNode;
@@ -68,7 +68,7 @@ public class SimpleLinkedList<E> implements List<E> {
         private final E currentElement;
         private Node<E> nextElement;
 
-        public Node(Node<E> prevElement, E currentElement, Node<E> nextElement) {
+        public Node(E currentElement, Node<E> nextElement) {
             this.currentElement = currentElement;
             this.nextElement = nextElement;
         }
