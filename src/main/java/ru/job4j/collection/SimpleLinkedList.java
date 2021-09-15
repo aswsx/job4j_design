@@ -15,6 +15,7 @@ public class SimpleLinkedList<E> implements List<E> {
         Objects.checkIndex(index, size);
     }
 
+    @Override
     public void add(E value) {
         Node<E> newNode = new Node<>(value, null);
         Node<E> tail = lastNode;
@@ -28,6 +29,7 @@ public class SimpleLinkedList<E> implements List<E> {
         modCount++;
     }
 
+    @Override
     public E get(int index) {
         checkIndex(index);
         Node<E> rsl = firstNode;
