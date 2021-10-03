@@ -2,7 +2,7 @@ package ru.job4j.gc;
 
 public class MyGCDemo {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         GCDemo.info();
 
         /**
