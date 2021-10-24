@@ -8,7 +8,7 @@ public class TableEditor implements AutoCloseable {
     private Connection connection;
 
     private final Properties properties;
-    private static final String ALTER_TABLE = "alter table"; //избавляет от дублирования кода
+    private static final String ALTER_TABLE = "alter table";
 
     public TableEditor(Properties properties) throws SQLException, ClassNotFoundException {
         this.properties = properties;

@@ -2,9 +2,6 @@ package ru.job4j.collection.hash;
 
 import java.util.*;
 
-/**
- *
- */
 public class User {
     private final String name;
     private final int children;
@@ -31,12 +28,12 @@ public class User {
 
     @Override
     public int hashCode() {
-        int result = name.hashCode(); //инициализация переменной result
-        var a = Integer.hashCode(children); //вычисление хэшкода второго поля
-        int b = birthday.hashCode(); // вычисление хэшкода третьего поля
-        result = 31 * result + a; //вычисление результата для второго поля
-        result = 31 * result + b; //вычисление итогового результата
-        return result; //возврат вычисленного хэшкода
+        int result = name.hashCode();
+        var a = Integer.hashCode(children);
+        int b = birthday.hashCode();
+        result = 31 * result + a;
+        result = 31 * result + b;
+        return result;
     }
 
     public static void main(String[] args) {

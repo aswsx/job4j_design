@@ -48,7 +48,6 @@ public class MyGCDemo {
         for (int i = 0; i < 5000; i++) {
             new User(i);
         }
-        //System.gc();
         GCDemo.info();
     }
 }
