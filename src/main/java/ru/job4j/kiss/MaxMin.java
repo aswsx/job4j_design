@@ -8,21 +8,19 @@ import java.util.List;
  */
 public class MaxMin {
     /**
-     *
-     * @param value исходный список элементов
+     * @param value      исходный список элементов
      * @param comparator компаратор для сравнения элементов
-     * @param <T> обобщенный тип возвращаемого значения
+     * @param <T>        обобщенный тип возвращаемого значения
      * @return возврат найденного максимального элемента
      */
     public <T> T max(List<T> value, Comparator<T> comparator) {
-      return valuesComparing(value, comparator);
+        return valuesComparing(value, comparator);
     }
 
     /**
-     *
-     * @param value исходный список элементов
+     * @param value      исходный список элементов
      * @param comparator компаратор для сравнения элементов
-     * @param <T> обобщенный тип возвращаемого значения
+     * @param <T>        обобщенный тип возвращаемого значения
      * @return возврат найденного минимального элемента
      */
     public <T> T min(List<T> value, Comparator<T> comparator) {
@@ -31,15 +29,16 @@ public class MaxMin {
 
     /**
      * Метод принимает список элементов, проходит его в цикле и с помощью матода compare сравнивает элементы
-     * @param value исходный список элементов
+     *
+     * @param value      исходный список элементов
      * @param comparator компаратор для сравнения элементов
-     * @param <T> обобщенный тип возвращаемого значения
+     * @param <T>        обобщенный тип возвращаемого значения
      * @return возврат найденного элемента
      */
-    private static <T> T valuesComparing(List<T> value, Comparator<T> comparator){
+    private static <T> T valuesComparing(List<T> value, Comparator<T> comparator) {
         T rsl = value.get(0);
-        for(T elem : value) {
-            if(comparator.compare(rsl, elem) < 0) {
+        for (T elem : value) {
+            if (comparator.compare(rsl, elem) < 0) {
                 rsl = elem;
             }
         }
