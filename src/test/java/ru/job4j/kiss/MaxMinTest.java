@@ -19,12 +19,12 @@ public class MaxMinTest {
     public void init() {
         maxMin = new MaxMin();
         comparator = Integer::compareTo;
-        list = Arrays.asList(1, 5, 2, 6, 8, 4, 3, 9, 7);
+        list = Arrays.asList(1, 5, 2, 6, 8, 4, 3, 9, 7, 10);
     }
 
     @Test
     public void maxVal() {
-        assertThat(maxMin.max(list, comparator), Is.is(9));
+        assertThat(maxMin.max(list, comparator), Is.is(10));
     }
 
     @Test
