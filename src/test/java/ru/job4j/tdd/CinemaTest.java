@@ -1,7 +1,19 @@
 package ru.job4j.tdd;
 
+import org.junit.Ignore;
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.List;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+
 public class CinemaTest {
-/*
+
+    @Ignore
     @Test
     public void whenBuyTicketSuccess() {
         Account account = new AccountCinema();
@@ -12,6 +24,7 @@ public class CinemaTest {
         assertThat(ticket, is(new Ticket3D()));
     }
 
+    @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void whenBuyTicketAndDateIsWrong() {
         Account account = new AccountCinema();
@@ -21,6 +34,7 @@ public class CinemaTest {
         cinema.buy(account, 1, 1, date);
     }
 
+    @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void whenBuyTicketAndWrongPlace() {
         Account account = new AccountCinema();
@@ -30,6 +44,7 @@ public class CinemaTest {
         Ticket ticket = cinema.buy(account, -1, -1, date);
     }
 
+    @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void whenBuyTicketAndSamePlace() {
         Account account = new AccountCinema();
@@ -40,6 +55,7 @@ public class CinemaTest {
         Ticket ticket2 = cinema.buy(account, 1, 1, date);
     }
 
+    @Ignore
     @Test
     public void whenSessionExists() {
         Cinema cinema = new Cinema3D();
@@ -48,6 +64,7 @@ public class CinemaTest {
         assertThat(sessions, is(Collections.singletonList(new Session3D())));
     }
 
+    @Ignore
     @Test
     public void whenAddSessionToListIsSuccessful() {
         Session session = new Session3D();
@@ -56,6 +73,7 @@ public class CinemaTest {
         assertThat(sessions, is(Collections.singletonList(new Session3D())));
     }
 
+    @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void whenAddTheSameSessionToList() {
         Session session = new Session3D();
@@ -63,5 +81,4 @@ public class CinemaTest {
         sessions.add(session);
         sessions.add(session);
     }
- */
 }
