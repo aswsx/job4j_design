@@ -34,6 +34,7 @@ public class ITReportEngine implements Report {
                         .append(";")
                         .append(System.lineSeparator()));
         text.append("</body>").append(System.lineSeparator());
+        text.append("</html>").append(System.lineSeparator());
         return text.toString();
     }
 }
