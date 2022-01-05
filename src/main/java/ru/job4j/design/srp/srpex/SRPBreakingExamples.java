@@ -28,8 +28,8 @@ public class SRPBreakingExamples {
         int subtract = a - b;
         int multiply = a * b;
         int divide = a / b;
-        return String.format("сумма чисел %d, разность чисел %d, " +
-                "произведение чисел %d, частное чисел %d", sum, subtract, multiply, divide);
+        return String.format("сумма чисел %d, разность чисел %d, "
+                + "произведение чисел %d, частное чисел %d", sum, subtract, multiply, divide);
     }
 
     /**
@@ -121,6 +121,7 @@ public class SRPBreakingExamples {
     public static class Transformer {
         Scanner scan = new Scanner(System.in);
         int digit = scan.nextInt();
+
         public void transform() {
             String result = String.valueOf((int) Math.exp(digit));
             LOG.info(result);
