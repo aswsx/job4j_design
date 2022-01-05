@@ -111,6 +111,8 @@ public class ReportEngineTest {
                 + ";"
                 + System.lineSeparator()
                 + "</body>"
+                + System.lineSeparator()
+                + "</html>"
                 + System.lineSeparator();
         assertThat(engine.generate(em -> true), is(expect));
     }
