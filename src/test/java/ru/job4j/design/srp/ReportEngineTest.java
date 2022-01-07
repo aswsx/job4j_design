@@ -3,7 +3,6 @@ package ru.job4j.design.srp;
 import org.junit.Test;
 
 import java.util.Calendar;
-import java.util.Comparator;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -41,9 +40,7 @@ public class ReportEngineTest {
         store.add(firstWorker);
         store.add(secondWorker);
         store.add(thirdWorker);
-        var engine = new HRReportEngine(store,
-                ((Comparator<Employee>) (e1, e2) ->
-                        Double.compare(e1.getSalary(), e2.getSalary())).reversed());
+        var engine = new HRReportEngine(store);
         var expect = "Name; Salary"
                 + System.lineSeparator()
                 + secondWorker.getName()

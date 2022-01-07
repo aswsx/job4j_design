@@ -12,12 +12,10 @@ import java.util.function.Predicate;
  * Имя; Зарплата
  * При этом выполняется сортировка по убыванию оклада
  */
-public class HRReportEngine implements Report, Comparator<Employee> {
-    private final Comparator<Employee> comp;
+public class HRReportEngine implements Report {
     private final Store store;
 
-    public HRReportEngine(Store store, Comparator<Employee> comp) {
-        this.comp = comp;
+    public HRReportEngine(Store store) {
         this.store = store;
     }
 
@@ -25,7 +23,7 @@ public class HRReportEngine implements Report, Comparator<Employee> {
     public String generate(Predicate<Employee> filter) {
         var text = new StringBuilder();
         var list = store.findBy(filter);
-        list.sort(comp);
+        list.sort(Comparator.comparingDouble(Employee::getSalary).reversed());
         text.append("Name; Salary").append(System.lineSeparator());
         list.forEach(e -> text
                 .append(e.getName())
@@ -34,10 +32,5 @@ public class HRReportEngine implements Report, Comparator<Employee> {
                 .append(";")
                 .append(System.lineSeparator()));
         return text.toString();
-    }
-
-    @Override
-    public int compare(Employee e1, Employee e2) {
-        return Double.compare(e1.getSalary(), e2.getSalary());
     }
 }
