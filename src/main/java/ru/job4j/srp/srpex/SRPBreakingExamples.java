@@ -1,4 +1,4 @@
-package ru.job4j.design.srp.srpex;
+package ru.job4j.srp.srpex;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
