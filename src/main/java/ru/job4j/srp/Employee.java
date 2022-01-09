@@ -13,10 +13,18 @@ import java.util.Objects;
  */
 public class Employee {
     private String name;
-    private final Calendar hired;
+    private Calendar hired;
     private final Calendar fired;
     private final double salary;
 
+    /**
+     * Конструктор
+     *
+     * @param name   имя
+     * @param hired  дата принятия на работу
+     * @param fired  дата увольнения
+     * @param salary зарплата
+     */
     public Employee(String name, Calendar hired, Calendar fired, double salary) {
         this.name = name;
         this.hired = hired;
@@ -36,7 +44,15 @@ public class Employee {
         return hired;
     }
 
+    public Calendar setHired(Calendar hired) {
+        return hired;
+    }
+
     public Calendar getFired() {
+        return fired;
+    }
+
+    public Calendar setFired(Calendar fired) {
         return fired;
     }
 
