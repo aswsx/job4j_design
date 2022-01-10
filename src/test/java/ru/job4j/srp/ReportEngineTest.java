@@ -169,7 +169,7 @@ public class ReportEngineTest {
         var worker = new Employee("Nikolay", now, now, 150);
         store.add(worker);
         JSONGenerator generator = new JSONGenerator(store);
-        String expect = "{\"employees\":[{\"name\":\""
+        String expect = "[{\"name\":\""
                 + worker.getName()
                 + "\",\""
                 + "hired\":{\"year\":"
@@ -198,7 +198,7 @@ public class ReportEngineTest {
                 + ",\"second\":"
                 + now.get(Calendar.SECOND)
                 + "},\"salary\":"
-                + worker.getSalary() + "}]}";
+                + worker.getSalary() + "}]";
         assertThat(generator.generate(em -> true), is(expect));
     }
 

@@ -24,6 +24,6 @@ public class JSONGenerator implements Report {
      */
     @Override
     public String generate(Predicate<Employee> filter) {
-        return new GsonBuilder().create().toJson(store);
+        return new GsonBuilder().create().toJson(store.findBy(filter));
     }
 }
