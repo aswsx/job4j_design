@@ -9,9 +9,9 @@ public class LSPBreakingExamples {
         int eggs = 2;
         int cupsOfMilk = 1;
 
-        public void omlet() {
+        public void omelette() {
             if (eggs > 1 && cupsOfMilk > 0) {
-                int omlet = eggs + cupsOfMilk;
+                int omelette = eggs + cupsOfMilk;
             } else {
                 throw new IllegalArgumentException("need more goods");
             }
@@ -19,9 +19,9 @@ public class LSPBreakingExamples {
 
         static class TwoPersonBreakfast extends Breakfast {
 
-            public void doubleOmlet() {
+            public void doubleOmelette() {
                 if (eggs > 3 && cupsOfMilk > 1) {
-                    int doubleomlet = eggs + cupsOfMilk;
+                    int doubleOmelette = eggs + cupsOfMilk;
                 } else {
                     throw new IllegalArgumentException("need more food");
                 }
