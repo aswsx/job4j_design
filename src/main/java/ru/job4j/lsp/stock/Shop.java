@@ -17,12 +17,19 @@ public class Shop implements Distribution {
 
     @Override
     public boolean add(Food food) {
-        if (expiredTimeInPercents(food) >= 25 && expiredTimeInPercents(food) <= 75) {
+        if (accept(food)) {
             store.add(food);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean accept(Food food) {
+        if (expiredTimeInPercents(food) >= 25 && expiredTimeInPercents(food) <= 75) {
             return true;
         } else if (expiredTimeInPercents(food) > 0 && expiredTimeInPercents(food) < 25) {
             food.setDiscountPrice(food.getPrice());
-            store.add(food);
             return true;
         }
         return false;

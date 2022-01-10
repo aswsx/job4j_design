@@ -16,11 +16,16 @@ public class Warehouse implements Distribution {
 
     @Override
     public boolean add(Food food) {
-        if (expiredTimeInPercents(food) > 75) {
+        if (accept(food)) {
             store.add(food);
             return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean accept(Food food) {
+        return (expiredTimeInPercents(food) > 75);
     }
 
     /**

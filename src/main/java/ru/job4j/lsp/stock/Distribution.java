@@ -17,6 +17,8 @@ public interface Distribution {
      */
     boolean add(Food food);
 
+    boolean accept(Food food);
+
     /**
      * Метод возвращает коллекцию продуктов
      *

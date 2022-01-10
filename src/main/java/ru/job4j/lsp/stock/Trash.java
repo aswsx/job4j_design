@@ -16,12 +16,18 @@ public class Trash implements Distribution {
 
     @Override
     public boolean add(Food food) {
-        if (expiredTimeInPercents(food) <= 0) {
+        if (accept(food)) {
             store.add(food);
             return true;
         }
         return false;
     }
+
+    @Override
+    public boolean accept(Food food) {
+        return (expiredTimeInPercents(food) <= 0);
+    }
+
 
     /**
      * Метод возвращает содержимое хранилища и после этого выполняет очистку хранилища от содержимого
