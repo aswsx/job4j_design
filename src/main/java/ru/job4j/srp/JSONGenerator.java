@@ -21,6 +21,7 @@ public class JSONGenerator implements Report {
      * Метод генерирует отчет в формате JSON
      * @param filter фильтр для выбора элементов из списка
      * @return возвращаемый отчет JSON
+     * bcghfdkty
      */
     @Override
     public String generate(Predicate<Employee> filter) {
