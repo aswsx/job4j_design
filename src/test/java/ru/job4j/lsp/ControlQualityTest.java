@@ -61,7 +61,7 @@ public class ControlQualityTest {
     @Test
     public void whenProductAddedToShopAnddiscount() {
         Food milk = new Milk("Молоко Домик в деревне", LocalDate.of(2022, Month.JANUARY,
-                10), LocalDate.of(2021, Month.NOVEMBER, 5),
+                11), LocalDate.of(2021, Month.NOVEMBER, 5),
                 130, 20);
         cont.distribute(milk);
         Distribution shop = stockList.get(1);
