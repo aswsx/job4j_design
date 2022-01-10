@@ -41,7 +41,7 @@ public class ControlQualityTest {
     @Test
     public void whenProductAddedToShop() {
         Food bread = new Bread("Хлеб Столичный", LocalDate.of(2022, Month.JANUARY,
-                15), LocalDate.of(2022, Month.JANUARY, 5),
+                20), LocalDate.of(2022, Month.JANUARY, 5),
                 120, 20);
         cont.distribute(bread);
         Distribution shop = stockList.get(1);

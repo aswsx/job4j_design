@@ -31,10 +31,7 @@ public class ControlQuality {
      */
     public void distribute(Food food) {
         for (Distribution dist : stock) {
-            if (dist.accept(food)) {
-                dist.add(food);
-                break;
-            }
+            dist.add(food);
         }
     }
 }

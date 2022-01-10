@@ -2,6 +2,8 @@ package ru.job4j.lsp.stock;
 
 import ru.job4j.lsp.food.Food;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 /**
@@ -13,15 +15,7 @@ public interface Distribution {
      *
      * @param food - продукт
      */
-    void add(Food food);
-
-    /**
-     * Метод проверяет соответствует ли срок годности продукта текущему месторасположению
-     *
-     * @param food продукт
-     * @return результат проверки срока годности
-     */
-    boolean accept(Food food);
+    boolean add(Food food);
 
     /**
      * Метод возвращает коллекцию продуктов
@@ -29,4 +23,20 @@ public interface Distribution {
      * @return возвращаемая коллекция продуктов
      */
     List<Food> returnFoodList();
+
+    /**
+     * Метод вычисляет оставшийся срок годности продукта
+     * lifeTime- срок хранения продукта с момента его производства
+     * remain - оставшийся срок годности с текущей даты
+     *
+     * @param food продукт, для которого производится проверка
+     * @return оставшийся срок годности, выраженный в % от полного срока хранения
+     */
+    default double expiredTimeInPercents(Food food) {
+        double lifeTime = ChronoUnit.DAYS.between(food
+                .getCreateDate(), food.getExpiryDate());
+        double remain = ChronoUnit.DAYS.between(LocalDate
+                .now(), food.getExpiryDate());
+        return remain / lifeTime * 100;
+    }
 }
