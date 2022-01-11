@@ -21,5 +21,5 @@ public interface Parking {
      *
      * @return возвращаемый список
      */
-    List<Car> getParkedCars();
+    List<Car> getParkPlace();
 }

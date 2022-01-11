@@ -5,9 +5,18 @@ package ru.job4j.lsp.parking.model;
  */
 public class PassengerCar extends Car {
     /**
-     * Размер легковой машины равен 1
+     * Размер легковой машины
      */
-    private final int size = 1;
+    private final int size;
+
+    /**
+     * Конструктор
+     *
+     * @param size размер машины
+     */
+    public PassengerCar(int size) {
+        this.size = size;
+    }
 
     /**
      * Геттер
