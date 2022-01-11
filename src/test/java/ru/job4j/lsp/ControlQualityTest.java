@@ -6,13 +6,9 @@ import ru.job4j.lsp.food.Bread;
 import ru.job4j.lsp.food.Butter;
 import ru.job4j.lsp.food.Food;
 import ru.job4j.lsp.food.Milk;
-import ru.job4j.lsp.stock.Distribution;
-import ru.job4j.lsp.stock.Shop;
-import ru.job4j.lsp.stock.Trash;
-import ru.job4j.lsp.stock.Warehouse;
+import ru.job4j.lsp.stock.*;
 
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -30,8 +26,8 @@ public class ControlQualityTest {
 
     @Test
     public void whenProductAddedToWarehouse() {
-        Food butter = new Butter("Масло Топленое", LocalDate.of(2022, Month.NOVEMBER,
-                10), LocalDate.of(2021, Month.NOVEMBER, 5),
+        Food butter = new Butter("Масло Топленое", LocalDate.of(2022, 11,
+                10), LocalDate.of(2021, 11, 5),
                 130, 10);
         cont.distribute(butter);
         Distribution warehouse = stockList.get(0);
@@ -40,8 +36,8 @@ public class ControlQualityTest {
 
     @Test
     public void whenProductAddedToShop() {
-        Food bread = new Bread("Хлеб Столичный", LocalDate.of(2022, Month.JANUARY,
-                20), LocalDate.of(2022, Month.JANUARY, 5),
+        Food bread = new Bread("Хлеб Столичный", LocalDate.of(2022, 1,
+                20), LocalDate.of(2022, 1, 5),
                 120, 20);
         cont.distribute(bread);
         Distribution shop = stockList.get(1);
@@ -50,8 +46,8 @@ public class ControlQualityTest {
 
     @Test
     public void whenProductAddedToTrash() {
-        Food bread = new Bread("Хлеб Бородинский", LocalDate.of(2022, Month.JANUARY,
-                9), LocalDate.of(2022, Month.JANUARY, 4),
+        Food bread = new Bread("Хлеб Бородинский", LocalDate.of(2022, 1,
+                9), LocalDate.of(2022, 1, 4),
                 130, 20);
         cont.distribute(bread);
         Distribution trash = stockList.get(2);
@@ -59,9 +55,9 @@ public class ControlQualityTest {
     }
 
     @Test
-    public void whenProductAddedToShopAnddiscount() {
-        Food milk = new Milk("Молоко Домик в деревне", LocalDate.of(2022, Month.JANUARY,
-                18), LocalDate.of(2021, Month.NOVEMBER, 5),
+    public void whenProductAddedToShopAndDiscount() {
+        Food milk = new Milk("Молоко Домик в деревне", LocalDate.of(2022, 1,
+                18), LocalDate.of(2021, 11, 5),
                 130, 20);
         cont.distribute(milk);
         Distribution shop = stockList.get(1);
