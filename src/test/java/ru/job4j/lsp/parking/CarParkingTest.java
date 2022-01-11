@@ -20,10 +20,10 @@ public class CarParkingTest {
 
     @Before
     public void init() {
-        this.passCar1 = new PassengerCar(1);
-        this.passCar2 = new PassengerCar(1);
-        this.passCar3 = new PassengerCar(1);
-        this.passCar4 = new PassengerCar(1);
+        this.passCar1 = new PassengerCar();
+        this.passCar2 = new PassengerCar();
+        this.passCar3 = new PassengerCar();
+        this.passCar4 = new PassengerCar();
         this.truck1 = new Truck(2);
         this.truck2 = new Truck(2);
         this.truck3 = new Truck(3);

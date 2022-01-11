@@ -11,11 +11,9 @@ public class PassengerCar extends Car {
 
     /**
      * Конструктор
-     *
-     * @param size размер машины
      */
-    public PassengerCar(int size) {
-        this.size = size;
+    public PassengerCar() {
+        this.size = 1;
     }
 
     /**

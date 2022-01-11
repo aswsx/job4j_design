@@ -40,7 +40,8 @@ public class CarParking implements Parking {
      */
     @Override
     public List<Car> getParkPlace() {
-        return parkPlace;
+        var list = parkPlace;
+        return list;
     }
 
     /**
@@ -52,17 +53,17 @@ public class CarParking implements Parking {
     @Override
     public boolean parkTheCar(Car car) {
         if (car.getSize() == 1 && passCarPlaces > 0) {
-            parkPlace.add(car);
+            getParkPlace().add(car);
             passCarPlaces--;
             return true;
         }
         if (car.getSize() > 1) {
             if (truckPlaces > 0) {
-                parkPlace.add(car);
+                getParkPlace().add(car);
                 truckPlaces--;
                 return true;
             } else if (car.getSize() <= passCarPlaces) {
-                parkPlace.add(car);
+                getParkPlace().add(car);
                 passCarPlaces -= car.getSize();
                 return true;
             }
