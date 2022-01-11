@@ -1,4 +1,4 @@
-package ru.job4j.lsp.food;
+package ru.job4j.lsp.foodStorage.food;
 
 import java.time.LocalDate;
 import java.util.Objects;

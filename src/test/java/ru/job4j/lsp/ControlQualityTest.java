@@ -2,11 +2,11 @@ package ru.job4j.lsp;
 
 import org.junit.Before;
 import org.junit.Test;
-import ru.job4j.lsp.food.Bread;
-import ru.job4j.lsp.food.Butter;
-import ru.job4j.lsp.food.Food;
-import ru.job4j.lsp.food.Milk;
-import ru.job4j.lsp.stock.*;
+import ru.job4j.lsp.foodStorage.food.Bread;
+import ru.job4j.lsp.foodStorage.food.Butter;
+import ru.job4j.lsp.foodStorage.food.Food;
+import ru.job4j.lsp.foodStorage.food.Milk;
+import ru.job4j.lsp.foodStorage.stock.*;
 
 import java.time.LocalDate;
 import java.util.List;

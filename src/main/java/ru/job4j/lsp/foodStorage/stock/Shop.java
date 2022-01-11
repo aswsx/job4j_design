@@ -1,14 +1,15 @@
-package ru.job4j.lsp.stock;
+package ru.job4j.lsp.foodStorage.stock;
 
-import ru.job4j.lsp.food.Food;
+import ru.job4j.lsp.foodStorage.food.Food;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Класс - мусорная корзина. В него попадают просроченные продукты, со сроком годности <= 0
+ * Класс - витрина магазина. В него попадают продукты со сроком годности от 75% до 25% по обычной цене
+ * и от 25% до 0% по цене со скидкой
  */
-public class Trash implements Distribution {
+public class Shop implements Distribution {
     /**
      * Временное хранилище продукта
      */
@@ -25,9 +26,14 @@ public class Trash implements Distribution {
 
     @Override
     public boolean accept(Food food) {
-        return (expiredTimeInPercents(food) <= 0);
+        if (expiredTimeInPercents(food) >= 25 && expiredTimeInPercents(food) <= 75) {
+            return true;
+        } else if (expiredTimeInPercents(food) > 0 && expiredTimeInPercents(food) < 25) {
+            food.setDiscountPrice(food.getPrice());
+            return true;
+        }
+        return false;
     }
-
 
     /**
      * Метод возвращает содержимое хранилища и после этого выполняет очистку хранилища от содержимого
@@ -41,3 +47,4 @@ public class Trash implements Distribution {
         return list;
     }
 }
+
