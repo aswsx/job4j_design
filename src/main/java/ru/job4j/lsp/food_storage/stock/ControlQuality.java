@@ -1,6 +1,6 @@
-package ru.job4j.lsp.foodStorage.stock;
+package ru.job4j.lsp.food_storage.stock;
 
-import ru.job4j.lsp.foodStorage.food.Food;
+import ru.job4j.lsp.food_storage.food.Food;
 
 import java.util.List;
 

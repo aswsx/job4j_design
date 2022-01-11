@@ -1,14 +1,15 @@
-package ru.job4j.lsp.foodStorage.stock;
+package ru.job4j.lsp.food_storage.stock;
 
-import ru.job4j.lsp.foodStorage.food.Food;
+import ru.job4j.lsp.food_storage.food.Food;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Класс - временный склад, в нем хранятся свежие продукты, со сроком годности более 75%
+ * Класс - витрина магазина. В него попадают продукты со сроком годности от 75% до 25% по обычной цене
+ * и от 25% до 0% по цене со скидкой
  */
-public class Warehouse implements Distribution {
+public class Shop implements Distribution {
     /**
      * Временное хранилище продукта
      */
@@ -25,7 +26,13 @@ public class Warehouse implements Distribution {
 
     @Override
     public boolean accept(Food food) {
-        return (expiredTimeInPercents(food) > 75);
+        if (expiredTimeInPercents(food) >= 25 && expiredTimeInPercents(food) <= 75) {
+            return true;
+        } else if (expiredTimeInPercents(food) > 0 && expiredTimeInPercents(food) < 25) {
+            food.setDiscountPrice(food.getPrice());
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -40,3 +47,4 @@ public class Warehouse implements Distribution {
         return list;
     }
 }
+
