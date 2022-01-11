@@ -11,6 +11,7 @@ public class Car {
 
     /**
      * Геттер
+     *
      * @return размер
      */
     public int getSize() {
