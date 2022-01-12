@@ -11,7 +11,7 @@
 <img src="Pictures/maven.png" height="50"> 
 </p>
 ## Проект содержит решения блоков "CollectionsPro", "Ввод-Вывод, Socket", "SQL, JDBC", 
-"GC, работа с памятью", "ООД (SOLID, TDD)" курса <a href="https://github.com/aswsx/job4j_junior"> Job4j по разработке на языке Java</a>.
+"GC, работа с памятью", "ООД (SOLID, TDD)" курса <a href="https://github.com/aswsx/job4j_design"> Job4j по разработке на языке Java</a>.
 
 <h2>Содержимое проекта</h2>
 <ul>
