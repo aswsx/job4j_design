@@ -23,12 +23,13 @@
   <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/io"> Ввод-вывод </a></li>
   <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/generics">Дженерики</a></li>
   <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/cache">Кэш на SoftReference</a></li>
-  <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/jdbc">JDBC</a></li>
+  <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/jdbc">PostgreSQL, JDBC</a></li>
   <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/kiss">Принципы KISS, DRY, YAGNI</a></li> 
   <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/srp">SRP, Генератор отчетов</a></li> 
   <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/ocp">OCP</a></li> 
   <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/lsp">LSP, Хранилище продуктов, Парковка машин</a></li> 
   <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/serialization">Сериализация</a></li> 
+  <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/gc">Работа с памятью, GC</a></li> 
   <li>Интеграция с GitHub Actions </li>
 
 </ul>
