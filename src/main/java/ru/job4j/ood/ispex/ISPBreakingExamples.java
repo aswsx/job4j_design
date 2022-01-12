@@ -1,4 +1,4 @@
-package ru.job4j.ood.espex;
+package ru.job4j.ood.ispex;
 
 public class ISPBreakingExamples {
     /**
