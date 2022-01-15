@@ -43,9 +43,8 @@ public class ControlQuality {
         }
 
         for (Food food : foods) {
-            for (Distribution dist : stock) {
-                dist.add(food);
-            }
+            distribute(food);
         }
     }
 }
+
