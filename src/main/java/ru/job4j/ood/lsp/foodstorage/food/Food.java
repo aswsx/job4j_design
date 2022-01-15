@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class Food {
     private String name;
-    private final LocalDate expiryDate;
+    private LocalDate expiryDate;
     private final LocalDate createDate;
     private double price;
     private final double discount;
@@ -42,6 +42,10 @@ public class Food {
 
     public LocalDate getExpiryDate() {
         return expiryDate;
+    }
+
+    public void setExpiryDate(LocalDate expiryDate) {
+        this.expiryDate = expiryDate;
     }
 
     public LocalDate getCreateDate() {

@@ -63,4 +63,19 @@ public class ControlQualityTest {
         Distribution shop = stockList.get(1);
         assertThat(shop.returnFoodList(), is(List.of(milk)));
     }
+
+    @Test
+    public void whenProductAddedToShopAndDiscountAndThenResort() {
+        Food milk = new Milk("Молоко Домик в деревне", LocalDate.of(2022, 1,
+                18), LocalDate.of(2021, 11, 5),
+                130, 20);
+        cont.distribute(milk);
+        Distribution shop = stockList.get(1);
+        assertThat(shop.returnFoodList(), is(List.of(milk)));
+        milk.setExpiryDate(LocalDate.of(2022, 1, 14));
+        cont.distribute(milk);
+        cont.resort();
+        shop = stockList.get(2);
+        assertThat(shop.returnFoodList(), is(List.of(milk)));
+    }
 }
