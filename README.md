@@ -22,9 +22,11 @@
   <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/cache">Кэш на SoftReference</a></li>
   <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/jdbc">PostgreSQL, JDBC</a></li>
   <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/kiss">Принципы KISS, DRY, YAGNI</a></li> 
-  <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/srp">SRP, Генератор отчетов</a></li> 
-  <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/ocp">OCP</a></li> 
-  <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/lsp">LSP, Хранилище продуктов, Парковка машин</a></li> 
+  <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/ood/srp">SRP, Генератор отчетов</a></li> 
+  <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/ood/ocp">OCP</a></li> 
+  <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/ood/lsp">LSP, Хранилище продуктов, Парковка машин</a></li> 
+  <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/ood/isp">ISP</a></li> 
+  <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/ood/dip">DIP</a></li> 
   <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/serialization">Сериализация</a></li> 
   <li><a href="https://github.com/aswsx/job4j_design/tree/master/src/main/java/ru/job4j/gc">Работа с памятью, GC</a></li> 
   <li>Интеграция с GitHub Actions </li>
