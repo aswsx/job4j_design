@@ -68,14 +68,14 @@ public class MenuTest {
     }
 
     @Test
-    public void whenChooseWithoutAction() {
+    public void whenSelectWithoutAction() {
         Menu menu = new Menu();
         menu.add("Задача 1");
         Assert.assertFalse(menu.isSelect("Задача 1"));
     }
 
     @Test
-    public void whenChooseWithAction() {
+    public void whenSelectWithAction() {
         Menu menu = new Menu();
         menu.add("Задача 1", new StartAction());
         Assert.assertTrue(menu.isSelect("Задача 1"));
