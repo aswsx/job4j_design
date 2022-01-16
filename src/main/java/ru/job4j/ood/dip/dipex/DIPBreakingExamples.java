@@ -7,7 +7,7 @@ import java.util.Objects;
 /**
  * Класс содержит примеры нарушения принципа DIP
  */
-class Dipex {
+class DIPBreakingExamples {
     /**
      * Класс - модель детали
      */
