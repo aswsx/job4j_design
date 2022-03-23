@@ -72,7 +72,7 @@ public class ControlQualityTest {
         cont.distribute(milk);
         Distribution shop = stockList.get(1);
         assertThat(shop.returnFoodList(), is(List.of(milk)));
-        milk.setExpiryDate(LocalDate.of(2022, 1, 14));
+        milk.setExpiryDate(LocalDate.now());
         cont.distribute(milk);
         cont.resort();
         shop = stockList.get(2);

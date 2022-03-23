@@ -31,7 +31,7 @@
         <profile>
             <id>production</id>
             <properties>
-                <db.url>jdbc:postgresql://127.0.0.1:5432/tracker</db.url>
+                <db.url>jdbc:postgresql://127.0.0.1:5432/design</db.url>
                 <db.username>postgres</db.username>
                 <db.password>password</db.password>
                 <db.driver>org.postgresql.Driver</db.driver>
@@ -106,6 +106,7 @@
             <artifactId>checkstyle</artifactId>
             <version>9.0</version>
         </dependency>
+
     </dependencies>
     <build>
         <plugins>
