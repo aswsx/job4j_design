@@ -3,6 +3,10 @@
 [![Java CI with Maven](https://github.com/aswsx/job4j_design/actions/workflows/maven.yml/badge.svg?branch=master)](https://github.com/aswsx/job4j_design/actions/workflows/maven.yml)
 [![codecov](https://codecov.io/gh/aswsx/job4j_design/branch/master/graph/badge.svg?token=rIPqeJScWw)](https://codecov.io/gh/aswsx/job4j_design)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/aswsx/job4j_design)
+![GitHub last commit](https://img.shields.io/github/last-commit/aswsx/job4j_design)
+![GitHub top language](https://img.shields.io/github/languages/top/aswsx/job4j_design)
+![GitHub language count](https://img.shields.io/github/languages/count/aswsx/job4j_design)
+![Lines of code](https://img.shields.io/tokei/lines/github/aswsx/job4j_design)
 
 ## Используемые технологии
 
