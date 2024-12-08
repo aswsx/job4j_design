@@ -1,4 +1,4 @@
-package ru.job4j.iterator;
+package ru.job4j.assertj;
 
 import java.util.Iterator;
 
