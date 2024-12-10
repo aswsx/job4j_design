@@ -20,7 +20,7 @@ public class Matrix {
     }
 
     public static void main(String[] args) {
-        try (var out = new FileOutputStream("Matrix.txt")) {
+        try (var out = new FileOutputStream("data/Matrix.txt")) {
             out.write(multiple(9).getBytes());
         } catch (Exception e) {
             e.printStackTrace();
