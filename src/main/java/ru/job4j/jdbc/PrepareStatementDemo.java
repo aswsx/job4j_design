@@ -21,7 +21,7 @@ public class PrepareStatementDemo {
 
     public City insert(City city) {
         try (PreparedStatement statement =
-                     connection.prepareStatement("insert into cities(name, population) values (?, ?)",
+                     connection.prepareStatement("INSERT INTO cities(name, population) VALUES (?, ?)",
                              Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, city.getName());
             statement.setInt(2, city.getPopulation());
@@ -40,7 +40,7 @@ public class PrepareStatementDemo {
     public boolean update(City city) {
         var result = false;
         try (PreparedStatement statement =
-                     connection.prepareStatement("update cities set name = ?, population = ? where id = ?")) {
+                     connection.prepareStatement("UPDATE cities SET name = ?, population = ? WHERE id = ?")) {
             statement.setString(1, city.getName());
             statement.setInt(2, city.getPopulation());
             statement.setInt(3, city.getId());
@@ -54,7 +54,7 @@ public class PrepareStatementDemo {
     public boolean delete(int id) {
         var result = false;
         try (PreparedStatement statement =
-                     connection.prepareStatement("delete from cities where id = ?")) {
+                     connection.prepareStatement("DELETE FROM cities WHERE id = ?")) {
             statement.setInt(1, id);
             result = statement.executeUpdate() > 0;
         } catch (Exception e) {
@@ -65,7 +65,7 @@ public class PrepareStatementDemo {
 
     public List<City> findAll() {
         List<City> cities = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement("select * from cities")) {
+        try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM cities")) {
             try (var resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     cities.add(new City(
