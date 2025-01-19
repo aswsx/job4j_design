@@ -1,6 +1,5 @@
 SELECT *
 FROM product
-ORDER BY product.price DESC
-LIMIT 1;
+WHERE price = (SELECT MAX(price) FROM product);
 
 
