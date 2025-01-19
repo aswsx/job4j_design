@@ -1,4 +1,5 @@
-create table users(
-    id serial primary key,
+CREATE TABLE users
+(
+    id   serial PRIMARY KEY,
     name varchar(255)
 );

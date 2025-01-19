@@ -1,4 +1,0 @@
-insert into body(name) values ('sedan'), ('cabrio'), ('coupe');
-insert into engine(name) values ('gasoline'), ('diesel'), ('electric');
-insert into transmission(name) values ('mechanic'), ('auto'), ('cvt');
-insert into car(name, body_id, engine_id, transmission_id) values ('car_1', 1, 1, 1), ('car_2', 2, 2, 2);

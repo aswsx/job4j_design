@@ -1,2 +1,0 @@
-select avg(price)
-from devices_people;

@@ -16,7 +16,7 @@
  * Properties properties = new Properties();
  * StringBuilder expected = new StringBuilder();
  *
- * @Before public void init() throws IOException {
+ * @Before public void init.sql() throws IOException {
  * URL pathSource = ClassLoader.getSystemResource("app.properties");
  * properties.load(new FileReader(pathSource.getPath()));
  * }

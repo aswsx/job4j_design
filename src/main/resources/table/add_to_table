@@ -1,2 +1,0 @@
-insert into planes(model, engines_qty, engines_type, passengers_plane, passengers_qty)
-values ('A320', 4, 'Jet', true, 180);
