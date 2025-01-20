@@ -1,5 +1,5 @@
 CREATE TRIGGER discount_trigger
-    AFTER INSERT
+    BEFORE INSERT
     ON products
     FOR EACH ROW
 EXECUTE PROCEDURE discount();
