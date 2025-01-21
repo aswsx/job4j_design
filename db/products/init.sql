@@ -1,4 +1,4 @@
-DROP TABLE products;
+DROP TABLE IF EXISTS products;
 CREATE TABLE products
 (
     id       serial PRIMARY KEY,

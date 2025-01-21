@@ -17,3 +17,8 @@ CREATE TRIGGER history_trigger
     ON products
     FOR EACH ROW
 EXECUTE PROCEDURE insert_into_history_table();
+
+
+
+
+

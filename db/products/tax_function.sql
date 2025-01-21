@@ -4,7 +4,7 @@ CREATE
 $$
 BEGIN
     UPDATE products
-    SET price = price + price * 0.16
+    SET price = price * 1.16
     WHERE id = (SELECT id FROM inserted);
     RETURN new;
 END;
