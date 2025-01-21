@@ -1,13 +1,11 @@
-CREATE
-    OR REPLACE FUNCTION discount()
+CREATE OR REPLACE FUNCTION discount()
     RETURNS trigger AS
 $$
 BEGIN
-    UPDATE products
-    SET price = price - price * 0.2
-    WHERE count <= 5
-      AND id = new.id;
+    NEW.price := NEW.price * 1.2;
     RETURN NEW;
 END;
 $$
     LANGUAGE 'plpgsql';
+
+ALTER FUNCTION discount() OWNER TO postgres;
